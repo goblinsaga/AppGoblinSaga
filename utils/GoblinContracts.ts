@@ -4,8 +4,8 @@ import { getContract } from "thirdweb";
 import { stakingABI } from "./GoblinsABI";
 
 const nftContractAddress = "0x4Ac03107603F37AD24a36c32bEC98b22AF46ABbf";
-const rewardTokenContractAddress = "0x8a5135FFb75af2460605d26c190DB5862c6Ec55b";
-const stakingContractAddress = "0xD38bD38f9b96c9B34000A1336614506B272Fe913";
+const rewardTokenContractAddress = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468";
+const stakingContractAddress = "0x4c501f493aE00a866A8cB2De4fc31f19e5d676f0";
 
 export const NFT_CONTRACT = getContract({
     client: client,
