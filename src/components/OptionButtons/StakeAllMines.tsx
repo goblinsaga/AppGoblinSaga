@@ -47,15 +47,24 @@ const StakeAllMines: React.FC = () => {
             await provider.send("eth_requestAccounts", []); // Solicita conexión de la billetera
             const signer = provider.getSigner();
 
+            // Crear una instancia del contrato ERC1155 usando ethers.js
+            const erc1155 = new ethers.Contract(
+                BUSINESSES_CONTRACT_ADDRESS,
+                [
+                    "function setApprovalForAll(address operator, bool approved)",
+                ],
+                signer
+            );
+
             // Aprobar todos los tokens ERC1155 para el contrato de staking
-            const approveTx = await erc1155Contract?.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
+            const approveTx = await erc1155.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
             await approveTx.wait(); // Esperar a que la transacción se confirme
 
             // Hacer stake de todos los NFTs
             const txPromises = ownedNfts.map((nft) => {
                 const tokenId = nft.metadata.id;
                 const amount = nft.quantityOwned || 1; // Cantidad de tokens ERC1155
-                return stakingContract?.stake(tokenId, amount);
+                return stakingContract?.call("stake", [tokenId, amount]); // Usar `call` para interactuar con el contrato
             });
 
             // Esperar todas las transacciones en paralelo
