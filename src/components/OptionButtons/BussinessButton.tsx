@@ -1,5 +1,5 @@
 import { useAddress, useContract, useNFT } from "@thirdweb-dev/react";
-import { BUSINESSES_CONTRACT_ADDRESS, STAKING_CONTRACT_ADDRESS } from "../../../consts/contracts2";
+import { BUSINESSES_CONTRACT_ADDRESS, STAKING_CONTRACT_ADDRESS } from "../../../consts/contracts2New";
 import { useEffect, useState } from "react";
 import { ethers, BigNumber } from "ethers";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
