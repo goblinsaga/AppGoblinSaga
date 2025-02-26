@@ -51,13 +51,12 @@ const StakeAllMines: React.FC = () => {
             const signer = provider.getSigner();
 
             const stakingContract = new ethers.Contract(STAKING_CONTRACT_ADDRESS, StakingContractABI, signer);
-            const erc1155Contract = new ethers.Contract(BUSINESSES_CONTRACT_ADDRESS, erc1155Contract?.abi, signer);
 
             // Verificar si el contrato de staking está aprobado para transferir los NFTs
-            const isApproved = await erc1155Contract.isApprovedForAll(address, STAKING_CONTRACT_ADDRESS);
+            const isApproved = await erc1155Contract?.isApprovedForAll(address, STAKING_CONTRACT_ADDRESS);
             if (!isApproved) {
                 // Si no está aprobado, solicitar aprobación
-                const approveTx = await erc1155Contract.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
+                const approveTx = await erc1155Contract?.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
                 await approveTx.wait(); // Esperar a que la transacción se confirme
             }
 
