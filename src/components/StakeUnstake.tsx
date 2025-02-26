@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useAddress, useContract, useContractRead, useOwnedNFTs } from "@thirdweb-dev/react";
 import { BigNumber, ethers } from "ethers";
-import { stakingContractAddress, nftDropContractAddress } from "../../consts/contractAddresses";
+import { stakingContractAddress, nftDropContractAddress } from "../../consts/contractAddressesNew";
 import SuccessMessagePopup from "./popups/SuccessMessagePopup";
 import ErrorMessagePopup from "./popups/ErrorMessagePopup";
 import StakingContractGoblinsABI from "../../contracts/StakingContractGoblinsABI.json";
