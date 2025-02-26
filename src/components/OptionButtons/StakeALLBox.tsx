@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
+import { useAddress, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 import { STAKING_CONTRACT_ADDRESS, BUSINESSES_CONTRACT_ADDRESS2 } from "../../../consts/contracts2New";
 import SuccessMessagePopup from "../popups/SuccessMessagePopup";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
-import StakingContractABI from "../../../contracts/StakingContractBoxABI.json"; // ABI del contrato de staking
 
 const StakeAllBox: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -26,22 +25,19 @@ const StakeAllBox: React.FC = () => {
     }, [successMessage]);
 
     const address = useAddress();
-    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS, StakingContractABI);
-    const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
+    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
+    const { contract: erc1155Contract } = useContract(BUSINESSES_CONTRACT_ADDRESS2);
+    const { data: ownedNfts } = useOwnedNFTs(erc1155Contract, address);
 
     async function stakeAllNfts() {
-        if (!address || !stakedTokens) return;
-
-        const stakedTokenIds = stakedTokens[0]; // Array de IDs de NFTs en stake
-        const stakedTokenAmounts = stakedTokens[1]; // Array de cantidades correspondientes
-
-        if (!stakedTokenIds || stakedTokenIds.length === 0) {
+        if (!address || !ownedNfts || ownedNfts.length === 0) {
             console.log("No NFTs to stake.");
             return;
         }
 
         try {
             setIsStaking(true);
+
             if (!window.ethereum) {
                 setErrorMessage("No Ethereum wallet found.");
                 return;
@@ -65,9 +61,10 @@ const StakeAllBox: React.FC = () => {
             await approveTx.wait(); // Esperar a que la transacción se confirme
 
             // Hacer stake de todos los NFTs
-            const txPromises = stakedTokenIds.map((tokenId, i) => {
-                const amount = stakedTokenAmounts[i];
-                return stakingContract.stake(tokenId, amount);
+            const txPromises = ownedNfts.map((nft) => {
+                const tokenId = nft.metadata.id;
+                const amount = nft.quantityOwned || 1; // Cantidad de tokens ERC1155
+                return stakingContract?.call("stake", [tokenId, amount]); // Usar `call` para interactuar con el contrato
             });
 
             // Esperar todas las transacciones en paralelo
