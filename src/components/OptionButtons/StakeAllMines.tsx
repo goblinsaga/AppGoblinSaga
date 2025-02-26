@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useAddress, useContract, useContractRead, useOwnedNFTs } from "@thirdweb-dev/react";
+import { useAddress, useContract, useOwnedNFTs } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 import { STAKING_CONTRACT_ADDRESS, BUSINESSES_CONTRACT_ADDRESS } from "../../../consts/contractsNew";
 import SuccessMessagePopup from "../popups/SuccessMessagePopup";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
-import StakingContractABI from "../../../contracts/StakingContractBoxABI.json"; // ABI del contrato de staking
 
 const StakeAllMines: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState('');
@@ -26,21 +25,19 @@ const StakeAllMines: React.FC = () => {
     }, [successMessage]);
 
     const address = useAddress();
-    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS, StakingContractABI);
-    const { contract: erc1155Contract } = useContract(BUSINESSES_CONTRACT_ADDRESS); // Sin ABI
+    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
+    const { contract: erc1155Contract } = useContract(BUSINESSES_CONTRACT_ADDRESS);
     const { data: ownedNfts } = useOwnedNFTs(erc1155Contract, address);
 
     async function stakeAllNfts() {
-        if (!address || !ownedNfts) return;
-
-        // Verificar si hay NFTs para staking
-        if (ownedNfts.length === 0) {
+        if (!address || !ownedNfts || ownedNfts.length === 0) {
             console.log("No NFTs to stake.");
             return;
         }
 
         try {
             setIsStaking(true);
+
             if (!window.ethereum) {
                 setErrorMessage("No Ethereum wallet found.");
                 return;
@@ -50,21 +47,15 @@ const StakeAllMines: React.FC = () => {
             await provider.send("eth_requestAccounts", []); // Solicita conexión de la billetera
             const signer = provider.getSigner();
 
-            const stakingContract = new ethers.Contract(STAKING_CONTRACT_ADDRESS, StakingContractABI, signer);
-
-            // Verificar si el contrato de staking está aprobado para transferir los NFTs
-            const isApproved = await erc1155Contract?.isApprovedForAll(address, STAKING_CONTRACT_ADDRESS);
-            if (!isApproved) {
-                // Si no está aprobado, solicitar aprobación
-                const approveTx = await erc1155Contract?.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
-                await approveTx.wait(); // Esperar a que la transacción se confirme
-            }
+            // Aprobar todos los tokens ERC1155 para el contrato de staking
+            const approveTx = await erc1155Contract?.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
+            await approveTx.wait(); // Esperar a que la transacción se confirme
 
             // Hacer stake de todos los NFTs
             const txPromises = ownedNfts.map((nft) => {
                 const tokenId = nft.metadata.id;
                 const amount = nft.quantityOwned || 1; // Cantidad de tokens ERC1155
-                return stakingContract.stake(tokenId, amount);
+                return stakingContract?.stake(tokenId, amount);
             });
 
             // Esperar todas las transacciones en paralelo
