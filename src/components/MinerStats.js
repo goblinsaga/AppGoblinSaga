@@ -17,6 +17,7 @@ import WizardCheck from "./Badges/WizardRank";
 import WarriorCheck from "./Badges/WarriorRank";
 import NFTCardHighRank from "./Badges/HighRank";
 import PolygonGasPrice from "./PolygonGasPrice";
+import StakeUnstakeNFTs from "./StakeUnstakeNFTs";
 import NewUsers from "./NewUsers";
 import UnstakeAllBox from "./OptionButtons/UnstakeAllBox";
 import StakeAllBox from "./OptionButtons/StakeALLBox";
@@ -253,6 +254,9 @@ const MinerStats = () => {
               <StakeAllBox />
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: "30px" }}>
+          <StakeUnstakeNFTs />
         </div>
         {/* !News Shotcode */}
       </div>
