@@ -4,8 +4,8 @@ import { getContract } from "thirdweb";
 import { stakingABI } from "./MiningsABI";
 
 const nftContractAddress = "0x8c73fc3b9178c99576D39e0CD7d0A64C89bdEb8E";
-const rewardTokenContractAddress = "0x8a5135FFb75af2460605d26c190DB5862c6Ec55b";
-const stakingContractAddress = "0xe088d4349E1Fe17072A743b87FB2d511C4772449";
+const rewardTokenContractAddress = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468";
+const stakingContractAddress = "0x48A3a50b925CA2c2e92fCF77883BD0df111E9c51";
 
 export const NFT_CONTRACT = getContract({
     client: client,
