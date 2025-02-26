@@ -82,7 +82,7 @@ const StakeAllNFT: React.FC = () => {
                 disabled={isStaking}
                 className="metaportal_fn_buttonLW full"
             >
-                {isStaking ? "Staking..." : "Mine all Goblins"}
+                {isStaking ? "Staking..." : "Mine All NFTs"}
             </button>
         </div>
     );
