@@ -1,5 +1,5 @@
 import { useAddress, useContract, useNFT } from "@thirdweb-dev/react";
-import { BUSINESSES_CONTRACT_ADDRESS, STAKING_CONTRACT_ADDRESS } from "../../../consts/contracts2New";
+import { BUSINESSES_CONTRACT_ADDRESS, STAKING_CONTRACT_ADDRESS2 } from "../../../consts/contracts2New";
 import { useEffect, useState } from "react";
 import { ethers, BigNumber } from "ethers";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
@@ -37,7 +37,7 @@ export default function BusinessButton({ tokenId }: Props) {
     const { data: nft } = useNFT(businessesContract, tokenId);
 
     // Obtener el contrato de staking
-    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
+    const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS2);
 
     useEffect(() => {
         if (!stakingContract || !address || tokenId === undefined) return;
@@ -69,7 +69,7 @@ export default function BusinessButton({ tokenId }: Props) {
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
             const stakingContractInstance = new ethers.Contract(
-                STAKING_CONTRACT_ADDRESS,
+                STAKING_CONTRACT_ADDRESS2,
                 stakingContractBussinessABI,
                 signer
             ) as unknown as StakingContract;
