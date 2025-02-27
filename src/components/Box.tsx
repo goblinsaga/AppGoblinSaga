@@ -12,8 +12,8 @@ const Box = () => {
     const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
     const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
-    // Ordenar los tokens staked por ID en orden ascendente
-    const sortedStakedTokens = stakedTokens
+    // Verificar si stakedTokens[0] existe y es un array
+    const sortedStakedTokens = Array.isArray(stakedTokens?.[0])
         ? stakedTokens[0].sort((a: BigNumber, b: BigNumber) => a.toNumber() - b.toNumber())
         : [];
 
