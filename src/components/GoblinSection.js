@@ -3,7 +3,7 @@
 import { useAddress, useContract, useContractRead, useOwnedNFTs } from "@thirdweb-dev/react";
 import NFTCard from "./NFTCard";
 import { useState, useEffect } from "react";
-import { nftDropContractAddress, stakingContractAddress } from "../../consts/contractAddresses2";
+import { nftDropContractAddress, stakingContractAddress } from "../../consts/contractAddressesNew";
 import ErrorMessagePopup from '../components/popups/ErrorMessagePopup';
 import SuccessMessagePopup from '../components/popups/SuccessMessagePopup';
 import { client } from "../app/client";
