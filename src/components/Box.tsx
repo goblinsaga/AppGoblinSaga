@@ -12,11 +12,16 @@ const Box = () => {
     const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
     const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
+    // Ordenar los tokens por su ID
+    const sortedTokens = stakedTokens && stakedTokens[0].length > 0
+        ? stakedTokens[0].slice().sort((a: BigNumber, b: BigNumber) => a.toNumber() - b.toNumber())
+        : [];
+
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
             <div className="gridNFT">
-                {stakedTokens && stakedTokens[0].length > 0 ? (
-                    stakedTokens[0]?.map((stakedToken: BigNumber) => (
+                {sortedTokens.length > 0 ? (
+                    sortedTokens.map((stakedToken: BigNumber) => (
                         <BoxCard
                             key={stakedToken.toString()}
                             tokenId={stakedToken.toNumber()}
