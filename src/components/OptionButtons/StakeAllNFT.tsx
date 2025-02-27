@@ -11,6 +11,7 @@ const StakeAllNFT: React.FC = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isStaking, setIsStaking] = useState(false);
 
+    // Limpiar mensajes de error y éxito después de 4 segundos
     useEffect(() => {
         if (errorMessage) {
             const timer = setTimeout(() => setErrorMessage(''), 4000);
@@ -25,61 +26,117 @@ const StakeAllNFT: React.FC = () => {
         }
     }, [successMessage]);
 
+    // Obtener la dirección del usuario conectado
     const address = useAddress();
+
+    // Obtener instancias de los contratos
     const { contract: nftDropContract } = useContract(nftDropContractAddress, "nft-drop");
-    const { contract, isLoading } = useContract(stakingContractAddress);
+    const { contract: stakingContract, isLoading: isStakingContractLoading } = useContract(stakingContractAddress);
+
+    // Obtener los NFTs poseídos por el usuario
     const { data: ownedNfts } = useOwnedNFTs(nftDropContract, address);
-    const { data: stakedTokens } = useContractRead(contract, "getStakeInfo", [address]);
 
+    // Obtener información de los NFTs apostados
+    const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
+
+    // Verificar si un NFT ya está apostado
+    function isNftStaked(nftId: string) {
+        return stakedTokens && stakedTokens[0]?.includes(BigNumber.from(nftId));
+    }
+
+    // Función para aprobar el contrato de staking
+    async function approveStakingContract() {
+        if (!nftDropContract || !address) {
+            setErrorMessage("NFT Drop contract or address not found.");
+            return false;
+        }
+
+        try {
+            console.log("Approving staking contract...");
+            const tx = await nftDropContract.setApprovalForAll(stakingContractAddress, true);
+            await tx.wait();
+            console.log("Approval granted for staking contract.");
+            return true;
+        } catch (error) {
+            console.error("Approval error:", error);
+            setErrorMessage("Error: Approval transaction failed.");
+            return false;
+        }
+    }
+
+    // Función para apostar todos los NFTs no apostados
     async function stakeAllNfts() {
-        if (!address || !ownedNfts) return;
-
-        const unstackedNfts = ownedNfts.filter((nft) => !isNftStaked(nft.metadata.id));
-        if (unstackedNfts.length === 0) {
-            console.log("No NFTs to stake.");
+        if (!address || !ownedNfts) {
+            console.error("No address or owned NFTs found.");
+            setErrorMessage("No address or owned NFTs found.");
             return;
         }
 
+        // Filtrar los NFTs que no están apostados
+        const unstackedNfts = ownedNfts.filter((nft) => !isNftStaked(nft.metadata.id));
+        if (unstackedNfts.length === 0) {
+            console.log("No NFTs to stake.");
+            setErrorMessage("No NFTs to stake.");
+            return;
+        }
+
+        // Obtener los IDs de los NFTs no apostados
         const nftIds = unstackedNfts.map((nft) => nft.metadata.id);
+        console.log("NFT IDs to stake:", nftIds);
 
         try {
             setIsStaking(true);
+
+            // Verificar si MetaMask está instalado
             if (!window.ethereum) {
                 setErrorMessage("No Ethereum wallet found.");
                 return;
             }
 
+            // Conectar a MetaMask y obtener el signer
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
 
+            // Crear una instancia del contrato de staking
             const stakingContract = new ethers.Contract(stakingContractAddress, StakingContractGoblinsABI, signer);
 
+            // Verificar si el contrato de staking tiene aprobación para manejar los NFTs
             const isApproved = await nftDropContract?.isApproved(address, stakingContractAddress);
+            console.log("Is staking contract approved?", isApproved);
+
             if (!isApproved) {
-                await nftDropContract?.setApprovalForAll(stakingContractAddress, true);
+                const approvalSuccess = await approveStakingContract();
+                if (!approvalSuccess) {
+                    return; // Detener si la aprobación falla
+                }
             }
 
-            await stakingContract.stake(nftIds);
+            // Apostar los NFTs con gasLimit automático
+            console.log("Staking NFTs...");
+            const tx = await stakingContract.stake(nftIds);
+            await tx.wait();
+            console.log("Staking transaction confirmed:", tx.hash);
+
             setSuccessMessage("Goblins Working");
         } catch (error) {
+            console.error("Staking error:", error);
             setErrorMessage("Error: Transaction rejected or insufficient funds.");
         } finally {
             setIsStaking(false);
         }
     }
 
-    function isNftStaked(nftId: string) {
-        return stakedTokens && stakedTokens[0]?.includes(BigNumber.from(nftId));
-    }
-
     return (
         <div>
+            {/* Mostrar mensajes de éxito y error */}
             {successMessage && <SuccessMessagePopup message={successMessage} onClose={() => setSuccessMessage('')} />}
             {errorMessage && <ErrorMessagePopup message={errorMessage} onClose={() => setErrorMessage('')} />}
+
+            {/* Botón para apostar todos los NFTs */}
             <button
                 onClick={stakeAllNfts}
-                disabled={isStaking}
+                disabled={isStaking || isStakingContractLoading}
                 className="metaportal_fn_buttonLW full"
             >
                 {isStaking ? "Staking..." : "Mine All NFTs"}
