@@ -255,9 +255,6 @@ const MinerStats = () => {
             </div>
           </div>
         </div>
-        <div style={{ marginTop: "30px" }}>
-          <StakeUnstakeNFTs />
-        </div>
         {/* !News Shotcode */}
       </div>
     </section>
