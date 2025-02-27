@@ -12,16 +12,11 @@ const Box = () => {
     const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
     const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
-    // Verificar si stakedTokens[0] existe y es un array
-    const sortedStakedTokens = Array.isArray(stakedTokens?.[0])
-        ? stakedTokens[0].sort((a: BigNumber, b: BigNumber) => a.toNumber() - b.toNumber())
-        : [];
-
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
             <div className="gridNFT">
-                {sortedStakedTokens.length > 0 ? (
-                    sortedStakedTokens.map((stakedToken: BigNumber) => (
+                {stakedTokens && stakedTokens[0].length > 0 ? (
+                    stakedTokens[0]?.map((stakedToken: BigNumber) => (
                         <BoxCard
                             key={stakedToken.toString()}
                             tokenId={stakedToken.toNumber()}
