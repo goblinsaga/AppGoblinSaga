@@ -4,7 +4,6 @@ import UserBalance from "./UserStats/UserBalance";
 import ClaimxGSA from "./OptionButtons/ClaimxGSA";
 import BusinessButton from "./OptionButtons/BussinessButton";
 import BoxButton from "./OptionButtons/BoxButton";
-import StakeAllNFT from "./OptionButtons/StakeAllNFT";
 import UnstakeAllNFT from "./OptionButtons/UnstakeAllNFT";
 import GoblinsMiningCount from "./GoblinsMiningCount";
 import NFTCardOG from "./Badges/OGHolder";
@@ -17,12 +16,12 @@ import WizardCheck from "./Badges/WizardRank";
 import WarriorCheck from "./Badges/WarriorRank";
 import NFTCardHighRank from "./Badges/HighRank";
 import PolygonGasPrice from "./PolygonGasPrice";
-import StakeUnstakeNFTs from "./StakeUnstake";
 import NewUsers from "./NewUsers";
 import UnstakeAllBox from "./OptionButtons/UnstakeAllBox";
 import StakeAllBox from "./OptionButtons/StakeALLBox";
 import UnstakeAllMines from "./OptionButtons/UnstakeAllMines";
 import StakeAllMines from "./OptionButtons/StakeAllMines";
+import StakeUnstakeNFTs from "./StakeUnstake";
 
 const MinerStats = () => {
   const [isVerified, setIsVerified] = useState(null);
@@ -40,57 +39,6 @@ const MinerStats = () => {
       </div>
 
       <div id="apps" className="container">
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
-            paddingBottom: "2rem",
-            flexWrap: "wrap", // Para asegurar que los elementos se ajusten bien en pantalla pequeña.
-          }}
-        >
-          <div
-            style={{
-              width: "260px",
-              flex: "1 1 auto", // Permite que los elementos se adapten.
-            }}
-            className="blog__item"
-          >
-            <div className="counter">
-              <span className="cc">
-                <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
-              </span>
-            </div>
-            <div className="meta">
-              <p>$GSA Incoming</p>
-            </div>
-            <div className="title">
-              <h5><CombinedRewards /></h5>
-            </div>
-          </div>
-
-          <div
-            style={{
-              width: "260px",
-              flex: "1 1 auto",
-            }}
-            className="blog__item"
-          >
-            <div className="counter">
-              <span className="cc">
-                <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
-              </span>
-            </div>
-            <div className="meta">
-              <p>$GSA Balance</p>
-            </div>
-            <div className="title">
-              <h5><UserBalance /></h5>
-            </div>
-          </div>
-        </div>
         {/* News Shotcode */}
         <div className="fn_cs_news">
           <div className="news_part">
@@ -146,10 +94,95 @@ const MinerStats = () => {
                 >
                   <GoblinsMiningCount />
                 </div>
+                <div style={{ height: "300px" }} className="blog__item">
+                  <div className="meta">
+                    <p>Menu App</p>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/shop">
+                      <a>
+                        <span>Item Shop</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi#simple-earn-v3">
+                      <a>
+                        <span>POL/GSA Stake</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi#simple-earn-v2">
+                      <a>
+                        <span>GSA/xGSA Stake</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi#token-migration">
+                      <a>
+                        <span>Token Migration</span>
+                      </a>
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
 
             <div className="right_items">
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "10px",
+                  flexWrap: "wrap", // Para asegurar que los elementos se ajusten bien en pantalla pequeña.
+                }}
+              >
+                <div
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    flex: "1 1 auto", // Permite que los elementos se adapten.
+                  }}
+                  className="blog__item"
+                >
+                  <div className="counter">
+                    <span className="cc">
+                      <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
+                    </span>
+                  </div>
+                  <div className="meta">
+                    <p>$GSA Incoming</p>
+                  </div>
+                  <div className="title">
+                    <h5><CombinedRewards /></h5>
+                  </div>
+                </div>
+
+                <div
+                  style={{
+                    width: "auto",
+                    height: "auto",
+                    flex: "1 1 auto",
+                  }}
+                  className="blog__item"
+                >
+                  <div className="counter">
+                    <span className="cc">
+                      <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
+                    </span>
+                  </div>
+                  <div className="meta">
+                    <p>$GSA Balance</p>
+                  </div>
+                  <div className="title">
+                    <h5><UserBalance /></h5>
+                  </div>
+                </div>
+              </div>
               <div style={{ height: "350px" }} className="blog__item">
                 <div className="counter">
                   <span className="cc">
@@ -167,48 +200,14 @@ const MinerStats = () => {
                 <PolygonGasPrice />
               </div>
 
-              <div style={{ height: "300px" }} className="blog__item">
-                <div className="meta">
-                  <p>Menu App</p>
-                </div>
-                <div className="read_more">
-                  <Link href="/shop">
-                    <a>
-                      <span>Item Shop</span>
-                    </a>
-                  </Link>
-                </div>
-                <div className="read_more">
-                  <Link href="/defi#simple-earn-v3">
-                    <a>
-                      <span>POL/GSA Stake</span>
-                    </a>
-                  </Link>
-                </div>
-                <div className="read_more">
-                  <Link href="/defi#simple-earn-v2">
-                    <a>
-                      <span>GSA/xGSA Stake</span>
-                    </a>
-                  </Link>
-                </div>
-                <div className="read_more">
-                  <Link href="/defi#token-migration">
-                    <a>
-                      <span>Token Migration</span>
-                    </a>
-                  </Link>
-                </div>
-              </div>
-
-              <div id="migration" className="blog__item">
+              <div id="migration" className="blog__item" style={{ height: "auto" }}>
                 <p style={{ textAlign: "center" }}>Migrate Goblins to V2</p>
                 <p style={{ textAlign: "center" }}>(If you are new user just click on Mine)</p>
                 <div style={{ marginTop: "30px" }} className="right_bot">
                   <UnstakeAllNFT />
                 </div>
                 <div style={{ marginTop: "30px" }} className="left_bot">
-                  <StakeAllNFT />
+                  <StakeUnstakeNFTs />
                 </div>
               </div>
             </div>
