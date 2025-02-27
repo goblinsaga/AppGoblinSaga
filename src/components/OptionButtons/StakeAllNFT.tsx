@@ -54,8 +54,12 @@ const StakeAllNFT: React.FC = () => {
         try {
             console.log("Approving staking contract...");
             const tx = await nftDropContract.setApprovalForAll(stakingContractAddress, true);
-            await tx.wait();
-            console.log("Approval granted for staking contract.");
+            console.log("Approval transaction sent:", tx);
+
+            // Esperar a que la transacción sea minada
+            const receipt = await tx.wait(); // Usar `wait` en la transacción de Ethers.js
+            console.log("Approval transaction confirmed:", receipt);
+
             return true;
         } catch (error) {
             console.error("Approval error:", error);
@@ -115,7 +119,7 @@ const StakeAllNFT: React.FC = () => {
             // Apostar los NFTs con gasLimit automático
             console.log("Staking NFTs...");
             const tx = await stakingContract.stake(nftIds);
-            await tx.wait();
+            await tx.wait(); // Esperar a que la transacción sea minada
             console.log("Staking transaction confirmed:", tx.hash);
 
             setSuccessMessage("Goblins Working");
