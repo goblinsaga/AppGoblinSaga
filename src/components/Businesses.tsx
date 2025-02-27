@@ -17,9 +17,11 @@ const Businesses = () => {
     // IDs que no deseas mostrar
     const excludedIds = [12, 13, 14];
 
-    // Filtrar los stakedTokens para excluir los IDs no deseados
+    // Filtrar y ordenar los stakedTokens por ID en orden ascendente
     const filteredStakedTokens = stakedTokens
-        ? stakedTokens[0].filter((stakedToken: BigNumber) => !excludedIds.includes(stakedToken.toNumber()))
+        ? stakedTokens[0]
+              .filter((stakedToken: BigNumber) => !excludedIds.includes(stakedToken.toNumber()))
+              .sort((a: BigNumber, b: BigNumber) => a.toNumber() - b.toNumber())
         : [];
 
     return (
