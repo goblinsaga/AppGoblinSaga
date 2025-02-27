@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAddress, useContract, useContractRead, useOwnedNFTs } from "@thirdweb-dev/react";
-import { BigNumber, ethers } from "ethers";
+import { BigNumber } from "ethers";
 import { stakingContractAddress, nftDropContractAddress } from "../../../consts/contractAddressesNew";
 import SuccessMessagePopup from "../popups/SuccessMessagePopup";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
@@ -57,7 +57,7 @@ const StakeAllNFT: React.FC = () => {
             console.log("Approval transaction sent:", tx);
 
             // Esperar a que la transacción sea minada
-            const receipt = await tx.wait(); // Usar `wait` en la transacción de Ethers.js
+            const receipt = tx.receipt; // Usar `receipt` para verificar la confirmación
             console.log("Approval transaction confirmed:", receipt);
 
             return true;
@@ -97,14 +97,6 @@ const StakeAllNFT: React.FC = () => {
                 return;
             }
 
-            // Conectar a MetaMask y obtener el signer
-            const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send("eth_requestAccounts", []);
-            const signer = provider.getSigner();
-
-            // Crear una instancia del contrato de staking
-            const stakingContract = new ethers.Contract(stakingContractAddress, StakingContractGoblinsABI, signer);
-
             // Verificar si el contrato de staking tiene aprobación para manejar los NFTs
             const isApproved = await nftDropContract?.isApproved(address, stakingContractAddress);
             console.log("Is staking contract approved?", isApproved);
@@ -118,9 +110,8 @@ const StakeAllNFT: React.FC = () => {
 
             // Apostar los NFTs con gasLimit automático
             console.log("Staking NFTs...");
-            const tx = await stakingContract.stake(nftIds);
-            await tx.wait(); // Esperar a que la transacción sea minada
-            console.log("Staking transaction confirmed:", tx.hash);
+            const tx = await stakingContract.call("stake", [nftIds]);
+            console.log("Staking transaction confirmed:", tx);
 
             setSuccessMessage("Goblins Working");
         } catch (error) {
