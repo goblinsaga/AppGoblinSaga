@@ -24,27 +24,37 @@ const MobileNavigation = ({ walletToggle, navigationToggle }) => {
               </ul>
             </div>
           </div>
-          <div style={{ display: "block", width: "190px", height: "55px", zIndex: 10, position: "relative" }} className="metaportal_fn_buttonLW">
+          <div style={{ display: "block" }} className="wallet" >
             <ConnectWallet
-              termsOfServiceUrl="https://goblinsaga.xyz/terms-conditions"
-              privacyPolicyUrl="https://goblinsaga.xyz/policy"
               theme={lightTheme({
                 colors: {
-                  modalBg: "#150024",
-                  borderColor: "#150024",
-                  separatorLine: "#150024",
+                  modalBg: "#1b1221",
+                  borderColor: "#1b1221",
+                  separatorLine: "#4A0B67",
                   secondaryText: "#c4c4c4",
                   primaryText: "#ffffff",
-                  connectedButtonBg: "transparent",
-                  primaryButtonBg: "transparent",
+                  connectedButtonBg: "#1b1221",
+                  primaryButtonBg: "#1b1221",
                   primaryButtonText: "#ffffff",
-                  secondaryButtonHoverBg: "#000b42",
-                  connectedButtonBgHover: "transparent",
-                  walletSelectorButtonHoverBg: "#000b42",
+                  secondaryButtonHoverBg: "#4A0B67",
+                  connectedButtonBgHover: "#1b1221",
+                  walletSelectorButtonHoverBg: "#4A0B67",
                   secondaryButtonText: "#ffffff",
-                  secondaryButtonBg: "#000b42",
+                  secondaryButtonBg: "#4A0B67",
                 },
               })}
+              style={{
+                width: "171px",
+                height: "50px",
+                pointerEvents: "auto",
+                backgroundColor: "transparent",
+                border: "none",
+                borderRadius: "7px",
+                border: "3px solid transparent",
+                background: "linear-gradient(45deg, #1b1221, #1b1221) padding-box, linear-gradient(45deg, var(--mc1), var(--mc2), var(--mc1), var(--mc2)) border-box",
+                backgroundClip: "padding-box, border-box",
+                boxShadow: "0 4px 15px 2px rgba(142, 45, 226, 0.2)",
+              }}
               hideBuyButton={true}
               hideSendButton={true}
               hideReceiveButton={true}
@@ -53,20 +63,6 @@ const MobileNavigation = ({ walletToggle, navigationToggle }) => {
               modalSize={"compact"}
               showThirdwebBranding={false}
               modalTitleIconUrl={"/img/favicon.ico"}
-              btnTitle="Log In"
-              welcomeScreen={{
-                title: "The Definitive NFT Mining App",
-                subtitle: "Conquer the DeFi world through NFTs, mining, and rewards in an innovative universe on Polygon 💎",
-                img: {
-                  src: "/img/LogoGS.png",
-                  width: 320,
-                },
-              }}
-              style={{
-                zIndex: 20,
-                width: "190px",
-                height: "55px",
-              }}
             />
           </div>
         </div>
