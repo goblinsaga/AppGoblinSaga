@@ -3,7 +3,6 @@ import { ethers } from "ethers";
 import ErrorMessagePopup from './popups/ErrorMessagePopup';
 import SuccessMessagePopup from './popups/SuccessMessagePopup';
 import PolygonGasPrice from "./PolygonGasPrice";
-import LiquidityManager from "./ManageLiquidity";
 
 const GSA_TOKEN_OLD_ADDRESS = "0xC1e2859c9D20456022ADe2d03f2E48345cA177C2"; // Dirección del token antiguo
 const GSA_TOKEN_NEW_ADDRESS = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468"; // Dirección del token nuevo
@@ -59,11 +58,11 @@ const TokenSwap = () => {
         if (window.ethereum) {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
-    
+
             const migrationContract = new ethers.Contract(TOKEN_MIGRATION_CONTRACT_ADDRESS, TOKEN_MIGRATION_ABI, signer);
             const currentRate = await migrationContract.currentRate();
             setRate(currentRate);
-    
+
             try {
                 // Cargando balance del token antiguo
                 setLoadingOldToken(true);
@@ -76,7 +75,7 @@ const TokenSwap = () => {
             } finally {
                 setLoadingOldToken(false);
             }
-    
+
             try {
                 // Cargando balance del token nuevo
                 setLoadingNewToken(true);
@@ -118,15 +117,15 @@ const TokenSwap = () => {
             const amount = isOldToNew ? oldTokenAmount : newTokenAmount;
             const tokenAbi = isOldToNew ? GSA_OLD_ABI : GSA_NEW_ABI;
             const token = new ethers.Contract(tokenAddress, tokenAbi, signer);
-    
+
             setIsLoading(true);
-    
+
             try {
                 const approveTx = await token.approve(TOKEN_MIGRATION_CONTRACT_ADDRESS, ethers.utils.parseUnits(amount.toString(), 18));
                 await approveTx.wait();
                 setIsApproved(true);
                 setSuccessMessage("Successful token approval.");
-                
+
                 // Llamar automáticamente a handleSwap después de la aprobación
                 await handleSwap();
             } catch (err) {
@@ -138,23 +137,23 @@ const TokenSwap = () => {
         } else {
             setErrorMessage("Please, install MetaMask.");
         }
-    };    
+    };
 
     const handleSwap = async () => {
         if (window.ethereum) {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer = provider.getSigner();
             const migrationContract = new ethers.Contract(TOKEN_MIGRATION_CONTRACT_ADDRESS, TOKEN_MIGRATION_ABI, signer);
-    
+
             const adjustedAmount = isOldToNew ? oldTokenAmount : newTokenAmount;
-    
+
             if (adjustedAmount <= 0) {
                 setErrorMessage("The set quantity is not valid. Try another quantity.");
                 return;
             }
-    
+
             setIsLoading(true);
-    
+
             try {
                 const swapTx = isOldToNew
                     ? await migrationContract.swapOldtoNew(ethers.utils.parseUnits(adjustedAmount.toString(), 18))
@@ -171,7 +170,7 @@ const TokenSwap = () => {
         } else {
             setErrorMessage("Please, install MetaMask.");
         }
-    };    
+    };
 
     const toggleSwapDirection = () => {
         setIsOldToNew(!isOldToNew);
@@ -185,31 +184,31 @@ const TokenSwap = () => {
     };
 
     const handleAmountChange = (event) => {
-        let amount = event.target.value;
-    
+        let amount = Math.floor(event.target.value); // Redondear hacia abajo para asegurar que sea un número entero
+
         // Validar que el valor no sea menor a 1
         if (amount < 1) {
             amount = 1;
         }
-    
+
         // Validar que el valor no supere 1 billón de tokens
         const maxAmount = 800000000000; // 1 billón de tokens
         if (amount > maxAmount) {
             setErrorMessage("Suspicious Activity Detected.");
             return; // Detener la ejecución si el valor es mayor a 1 billón
         }
-    
+
         if (isOldToNew) {
             setOldTokenAmount(amount);
             if (amount > 0 && rate > 0) {
                 const calculatedNewToken = amount * rate;
-                setNewTokenAmount(calculatedNewToken.toFixed(2));
+                setNewTokenAmount(Math.floor(calculatedNewToken)); // Redondear hacia abajo para asegurar que sea un número entero
             }
         } else {
             setNewTokenAmount(amount);
             if (amount > 0 && rate > 0) {
                 const calculatedOldToken = amount / rate;
-                setOldTokenAmount(calculatedOldToken.toFixed(2));
+                setOldTokenAmount(Math.floor(calculatedOldToken)); // Redondear hacia abajo para asegurar que sea un número entero
             }
         }
         setIsApproved(false);
@@ -219,11 +218,11 @@ const TokenSwap = () => {
         const maxAmount = isOldToNew ? oldTokenBalance : newTokenBalance;
         if (maxAmount > 0 && rate > 0) {
             if (isOldToNew) {
-                setOldTokenAmount(maxAmount);
-                setNewTokenAmount((maxAmount * rate).toFixed(2));
+                setOldTokenAmount(Math.floor(maxAmount)); // Redondear hacia abajo para asegurar que sea un número entero
+                setNewTokenAmount(Math.floor(maxAmount * rate)); // Redondear hacia abajo para asegurar que sea un número entero
             } else {
-                setNewTokenAmount(maxAmount);
-                setOldTokenAmount((maxAmount / rate).toFixed(2));
+                setNewTokenAmount(Math.floor(maxAmount)); // Redondear hacia abajo para asegurar que sea un número entero
+                setOldTokenAmount(Math.floor(maxAmount / rate)); // Redondear hacia abajo para asegurar que sea un número entero
             }
         }
     };
@@ -237,7 +236,7 @@ const TokenSwap = () => {
                 {/* News Shotcode */}
                 <div className="fn_cs_news">
                     <div className="news_part">
-                    <div className="left_items">
+                        <div className="left_items">
                             <div className="blog__item">
                                 <div className="image">
                                     <p style={{ textAlign: "center" }}>Migrate your old $GSA to the new $GSA</p>
@@ -265,7 +264,7 @@ const TokenSwap = () => {
                                         value={isOldToNew ? oldTokenAmount : newTokenAmount}
                                         onChange={handleAmountChange}
                                         min="1"
-                                        step="any"
+                                        step="1" // Asegura que solo se puedan ingresar números enteros
                                         style={{
                                             border: "1px solid grey",
                                             backgroundColor: "transparent",
@@ -283,7 +282,6 @@ const TokenSwap = () => {
                                     <p style={{ fontSize: "12px", margin: 0, paddingTop: "15px" }}>
                                         <img src={isOldToNew ? "/img/GSAV2.png" : "/img/LOGOS-GS-32x32.png"} style={{ width: "20px" }} /> Balance: {isOldToNew ? newTokenBalance : oldTokenBalance}
                                     </p>
-
                                     <input
                                         type="number"
                                         value={isOldToNew ? newTokenAmount : oldTokenAmount}
