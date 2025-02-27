@@ -10,12 +10,16 @@ const Box = () => {
 
     // Obtener instancia del contrato de staking
     const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS);
-    const { data: stakedTokens, isLoading } = useContractRead(stakingContract, "getStakeInfo", [address]);
+    const { data: stakedTokens, isLoading, error } = useContractRead(stakingContract, "getStakeInfo", [address]);
 
-    // Filtrar y ordenar los stakedTokens por ID en orden ascendente
-    const filteredStakedTokens = stakedTokens
+    // Comprobación de si los datos son válidos y existen
+    const filteredStakedTokens = Array.isArray(stakedTokens?.[0])
         ? stakedTokens[0].sort((a: BigNumber, b: BigNumber) => a.toNumber() - b.toNumber())
         : [];
+
+    if (error) {
+        console.error("Error al obtener los datos del contrato:", error);
+    }
 
     return (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%" }}>
