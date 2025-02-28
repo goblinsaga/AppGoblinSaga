@@ -7,7 +7,7 @@ const NFTCardHighRank = () => {
   const [isHolder, setIsHolder] = useState(null); // Estado para verificar si es holder
 
   const nftContractAddress = "0x3AbEc11f132e055a766A8e92eE1EBF9aBFF42e08"; // Reemplaza con la dirección del contrato High Rank
-  const alchemyUrl = "https://polygon-mainnet.g.alchemy.com/v2/k2giPV8cSqnNo8IYCqbkonOpJKYyoaVR"; // Reemplaza con tu API Key de Alchemy
+  const alchemyUrl = "https://polygon-mainnet.g.alchemy.com/v2/Rwyo0npJ8fyyLQQQ5vFlH9K3yva_adGb"; // Reemplaza con tu API Key de Alchemy
 
   useEffect(() => {
     const checkHolderStatus = async () => {
