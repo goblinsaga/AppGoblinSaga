@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewUsers = () => {
+const NewUsersTwo = () => {
     return (
         <>
             <style>
@@ -92,4 +92,4 @@ const NewUsers = () => {
     );
 };
 
-export default NewUsers;
+export default NewUsersTwo;
