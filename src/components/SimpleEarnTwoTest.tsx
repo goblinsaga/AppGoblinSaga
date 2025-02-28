@@ -12,6 +12,7 @@ import UserBalance from './UserStats/UserBalance';
 import SEv2Rewards from './SEv2Rewards';
 import GsaTokenBalance from './GSABalance';
 import APRCalculator from './APRCalc';
+import SEHeader2Two from './SimpleEarnTwoTestTwo';
 
 // ABI del contrato
 const stakingContractABI = [
@@ -229,8 +230,8 @@ const SEHeader2: React.FC = () => {
     return (
         <section id="news">
             <div id="simple-earn-v3" className="container">
-                <h3 className="fn__maintitle big" data-text="Simple Earn V3" data-align="center">
-                    Simple Earn V3
+                <h3 className="fn__maintitle big" data-text="POL/GSA Staking" data-align="center">
+                    POL/GSA Staking
                 </h3>
                 <div className="fn_cs_news">
                     <div className="news_part">
@@ -240,7 +241,7 @@ const SEHeader2: React.FC = () => {
                                     <p>Simple Earn V3</p>
                                 </div>
                                 <div className="title">
-                                    <h3 style={{ color: "yellow" }}>Token Migration is progress unstake your tokens.</h3>
+                                    <p style={{ color: "yellow" }}>Token Migration is progress Stake your $POL on the new version.</p>
                                 </div>
 
                                 <div style={{ marginTop: "50px" }} className="containerGrid">
