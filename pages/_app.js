@@ -74,7 +74,7 @@ function BlockedWalletChecker({ children }) {
   const address = useAddress();
 
   // Cadena de direcciones bloqueadas separadas por comas
-  const blockedAddressesString = "0x71ef04391131b3529515990a9887663137cd6208";
+  const blockedAddressesString = "0x71ef04391131b3529515990a9887663137cd6208, 0x587c6a42D33629a8Da9Cd98b90cAe8c914440f2A";
 
   // Convertir la cadena en un array de direcciones
   const blockedAddresses = blockedAddressesString
@@ -87,8 +87,7 @@ function BlockedWalletChecker({ children }) {
       <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
         <div className="blog__item">
           <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', color: 'red', fontSize: '20px' }}>YOUR ACCOUNT HAS BEEN BLOCKED</p>
-          <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '18px' }}>REASON: Devaluation of Goblin NFTs in Minting Phase.</p>
-          <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '18px' }}>MARKET: Magic Eden.</p>
+          <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '18px' }}>REASON: Suspicious activity or unallowable transactions.</p>
           <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '14px', textAlign: "center" }}>We hope you understand, we want to protect our community holder's investment. If you think this is a mistake please contact Discord support.</p>
           <div>
             <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '14px' }}>Learn more about this</p>
