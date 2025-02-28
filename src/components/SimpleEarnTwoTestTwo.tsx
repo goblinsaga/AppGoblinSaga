@@ -317,7 +317,7 @@ const SEHeader2Two: React.FC = () => {
                                     </div>
 
                                     <div className="blog__item" style={{ marginTop: "30px", marginBottom: "30px" }}>
-                                        <p style={{ color: "yellow" }}>APR: 15.6%</p>
+                                        <p style={{ color: "yellow" }}>APR: 27.37%</p>
                                         <p>1 $POL = 1500 $GSA/48H</p>
                                     </div>
                                 </div>
