@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps }) {
           metamaskWallet(),
           coinbaseWallet(),
           trustWallet(),
-          okxWallet(),
           walletConnect(),
         ]}
         clientId={process.env.NEXT_PUBLIC_CLIENT_ID}
