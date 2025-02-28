@@ -7,7 +7,7 @@ const NFTCardOG = () => {
   const address = useAddress();
 
   const nftContractAddress = "0xf01190f77A2BE543674329F24E39e67B2C9804A1"; 
-  const alchemyUrl = "https://polygon-mainnet.g.alchemy.com/v2/k2giPV8cSqnNo8IYCqbkonOpJKYyoaVR";
+  const alchemyUrl = "https://polygon-mainnet.g.alchemy.com/v2/Rwyo0npJ8fyyLQQQ5vFlH9K3yva_adGb";
 
   useEffect(() => {
     const checkHolderStatus = async () => {
