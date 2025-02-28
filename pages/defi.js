@@ -1,5 +1,5 @@
-import SEHeader from "../src/components/SimpleEarnOneTest";
 import SEHeader2 from "../src/components/SimpleEarnTwoTest";
+import SEHeader2Two from "../src/components/SimpleEarnTwoTestTwo";
 import SEHeaderT from "../src/components/SimpleEarnOneTestTwo";
 import SectionDivider from "../src/components/SectionDivider";
 import Faq from "../src/components/Faq";
@@ -14,11 +14,10 @@ const DeFi = () => {
             <SectionDivider />
             {/* !Section RoadMap */}
             <SEHeader2 />
+            <SEHeader2Two />
             {/* Section Divider */}
             <SectionDivider />
             {/* Section Divider */}
-            <SEHeader />
-
             <SEHeaderT />
 
             <SectionDivider />
