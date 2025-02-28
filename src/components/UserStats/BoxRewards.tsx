@@ -4,7 +4,7 @@ import { BigNumber, ethers } from "ethers";
 import { BGSA_CONTRACT_ADDRESS } from "../../../consts/stakingContracts";
 
 // Alchemy URL
-const ALCHEMY_URL = "https://polygon-mainnet.g.alchemy.com/v2/xE8v6mApJllCIQ6aAxio-yb5ClJQkJQu";
+const ALCHEMY_URL = "https://polygon-mainnet.g.alchemy.com/v2/LRQw0cS60vd8TahpVDFBoOBx8zEpcMTy";
 
 const BoxRewards: React.FC = () => {
   const address = useAddress();
