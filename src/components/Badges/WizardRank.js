@@ -5,7 +5,7 @@ import React from 'react';
 import { useAddress } from "@thirdweb-dev/react";
 
 const contractAddress = '0x4c501f493aE00a866A8cB2De4fc31f19e5d676f0';
-const ALCHEMY_URL = 'https://polygon-mainnet.g.alchemy.com/v2/k2giPV8cSqnNo8IYCqbkonOpJKYyoaVR';
+const ALCHEMY_URL = 'https://polygon-mainnet.g.alchemy.com/v2/Rwyo0npJ8fyyLQQQ5vFlH9K3yva_adGb';
 
 const WizardCheck = ({ onVerificationStatus }) => {
     const address = useAddress();
