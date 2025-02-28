@@ -157,8 +157,11 @@ const SEHeaderT: React.FC = () => {
     };
 
     return (
-        <section style={{ marginBottom: "100px", marginTop: "-100px" }}>
+        <section id="news">
             <div id="simple-earn-v4" className="container">
+                <h3 className="fn__maintitle big" data-text="GSA Staking" data-align="center">
+                    GSA Staking
+                </h3>
                 <div className="fn_cs_news">
                     <div className="news_part">
                         <div className="left_items">
@@ -167,7 +170,7 @@ const SEHeaderT: React.FC = () => {
                                     <p>Simple Earn V4</p>
                                 </div>
                                 <div className="title">
-                                    <h3 style={{ color: "yellow" }}>Token Migration is progress unstake your tokens.</h3>
+                                    <p style={{ color: "yellow" }}>Token Migration is progress unstake your tokens. Wait for new version.</p>
                                 </div>
 
                                 <div style={{ marginTop: "50px" }} className="containerGrid">
