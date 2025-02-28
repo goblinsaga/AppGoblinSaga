@@ -3,7 +3,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 
 const TOKEN_CONTRACT_ADDRESS = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468";
-const ALCHEMY_URL = "https://polygon-mainnet.g.alchemy.com/v2/5PDJn3VDxRSiTXjdbz-dfVaZ6GuoVQ8c";
+const ALCHEMY_URL = "https://polygon-mainnet.g.alchemy.com/v2/5znR15EtIJTHpL_t8ibcUklZWyCnIc0h";
 
 const UserBalance: React.FC = () => {
   const address = useAddress();
