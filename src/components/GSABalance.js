@@ -4,8 +4,8 @@ import { ethers } from 'ethers';
 const GsaTokenBalance = () => {
   const [balance, setBalance] = useState(null);
   const [provider, setProvider] = useState(null); // Estado para el proveedor
-  const tokenAddress = '0xC1e2859c9D20456022ADe2d03f2E48345cA177C2'; // Dirección del token GSA
-  const contractAddress = '0xfa4aC4ADFB3D98646B16ec7a2d4d7c3082ab31D9'; // Dirección del contrato donde queremos verificar el balance
+  const tokenAddress = '0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468'; // Dirección del token GSA
+  const contractAddress = '0x23673A4CF7943E5D06487420B08bB15dB1ac7C12'; // Dirección del contrato donde queremos verificar el balance
 
   const tokenABI = [
     // ABI mínima para balanceOf
