@@ -5,7 +5,7 @@ import DailyRewardsABI from "../../contracts/DailyRewardsABI.json";
 import ErrorMessagePopup from './popups/ErrorMessagePopup';
 import SuccessMessagePopup from './popups/SuccessMessagePopup';
 import { lightTheme, Web3Button } from '@thirdweb-dev/react';
-import { BUSINESSES_CONTRACT_ADDRESS2, STAKING_CONTRACT_ADDRESS, TOKEN_CONTRACT_ADDRESS } from "../../consts/contracts2";
+import { BUSINESSES_CONTRACT_ADDRESS2, STAKING_CONTRACT_ADDRESS, TOKEN_CONTRACT_ADDRESS } from "../../consts/contracts2New";
 import { MediaRenderer, useAddress, useClaimConditions, useContract } from "@thirdweb-dev/react";
 
 
