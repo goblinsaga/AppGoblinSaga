@@ -54,7 +54,7 @@ const NewUsers = () => {
                             flex: 1,
                             width: "100%",
                             height: "100%",
-                            backgroundImage: "url('img/gd2.png')",
+                            backgroundImage: "url('img/gd4.png')",
                             backgroundSize: "cover",
                             backgroundPosition: "-10px center",
                             backgroundRepeat: "no-repeat",
