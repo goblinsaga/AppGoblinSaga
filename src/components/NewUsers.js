@@ -56,7 +56,7 @@ const NewUsers = () => {
                             height: "100%",
                             backgroundImage: "url('img/gd4.png')",
                             backgroundSize: "cover",
-                            backgroundPosition: "-10px center",
+                            backgroundPosition: "50px center",
                             backgroundRepeat: "no-repeat",
                         }}
                     ></div>
