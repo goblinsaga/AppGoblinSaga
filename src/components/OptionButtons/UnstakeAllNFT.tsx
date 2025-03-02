@@ -71,7 +71,7 @@ const UnstakeAllNFT: React.FC = () => {
                 disabled={isUnstaking}
                 className="metaportal_fn_buttonLW full"
             >
-                {isUnstaking ? "Unstaking..." : "Unmine all Goblins"}
+                {isUnstaking ? "Unstaking..." : "Unmine all Goblins (v1)"}
             </button>
         </div>
     );
