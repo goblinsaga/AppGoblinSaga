@@ -3,26 +3,13 @@ import { ethers } from "ethers";
 import { Button, Input, Select, Text, Box, VStack, Container } from "@chakra-ui/react";
 
 const smartContracts = [
-    { name: "GSA Social 1", address: "0x64f29e9e63cce89afcc02f72ba450493d613a328" },
-    { name: "GSA Social 2", address: "0xf14547926d383daf1476cb9319c0141eebce760f" },
-    { name: "GSA Social 3", address: "0x5d5a56cf41f93ef67285d4310b9670414f2db820" },
-    { name: "EPOP Social 1", address: "0x7eea0bb58436bb794a2f1c85af247fa00cd37477" },
-    { name: "EPOP Social 2", address: "0x175aaacf0b47ac7682ceb891b559600a4416e809" },
-    { name: "Tlaco Social 1", address: "0x68a47b881cc4db887f359d023d46aa846791d54b" },
-    { name: "Tlaco Social 2", address: "0x5aa15eb1b820c019cd69b120c3c12ab0d0970fb6" },
-    { name: "Daemon Social 1", address: "0x100b20ab742e40830f330a8fd73a284a28bb9742" },
-    { name: "Daemon Social 2", address: "0x54ca7d5d98126a5430f357207ca47ebc1f28ba79" },
-    { name: "Grand Gansta 1", address: "0x3d99db3836a53bfa41a68f2495e2c14cb1b0d42b" },
-    { name: "Grand Gansta 2", address: "0x42eDcB9Ba95a3d4817197fE60E7FF0606CB436D3" },
-    { name: "Grand Gansta 3", address: "0x2dB0B47988C7A00B2002a73D34A9BF5CC65A9a7A" },
-    { name: "GSA NFT Claim", address: "0x6737c8b9079803CE5B93198ec3d8E3721A682Cca" },
-    { name: "Greed Claim", address: "0x7c1149fd38ac89c52d0af38eba08a7ba1cf0a8d7" },
-    { name: "Amulet Claim", address: "0x6679b3480c4e1e53e6d54fd7070acfc196d26cef" },
-    { name: "Token Box", address: "0x4bd77d1c0856c81d382eb34d49cb8491819a8b53" },
-    { name: "Epop NFT Claim", address: "0x2b87a483a4c1502ab29ac235d2467c7108e15f54" },
+    { name: "GSA NFT Claim", address: "0xe18cf2c54c64d76237b06c7b4081f74eda672960" },
+    { name: "Greed Claim", address: "0x80d89a39fa93d03720aac5a1e49956cca9014008" },
+    { name: "Amulet Claim", address: "0xc6168f1e52848c30c4c91e11b059584cb59e7cb6" },
+    { name: "Token Box", address: "0xfbc30c0293003a39efa86aef9aa035f5d03ad86c" },
 ];
 
-const tokenAddress = "0xc1e2859c9d20456022ade2d03f2e48345ca177c2";
+const tokenAddress = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468";
 
 const DepositDailyRewards = () => {
     const [selectedContract, setSelectedContract] = useState(smartContracts[0].address);
