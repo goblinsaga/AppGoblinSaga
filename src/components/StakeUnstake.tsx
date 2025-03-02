@@ -179,7 +179,7 @@ const StakeUnstakeNFTs: React.FC = () => {
             >
                 {isProcessing
                     ? (isStakeMode ? "Mining..." : "Unmining...")
-                    : (isStakeMode ? "Mine NFTs" : "Unmine NFTs")}
+                    : (isStakeMode ? "Mine Goblins (v2)" : "Unmine Goblins (v2)")}
             </button>
         </div>
     );
