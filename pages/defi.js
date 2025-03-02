@@ -1,4 +1,3 @@
-import SEHeader2 from "../src/components/SimpleEarnTwoTest";
 import SEHeader2Two from "../src/components/SimpleEarnTwoTestTwo";
 import SEHeaderT from "../src/components/SimpleEarnOneTestTwo";
 import SectionDivider from "../src/components/SectionDivider";
@@ -13,7 +12,6 @@ const DeFi = () => {
             {/* Section RoadMap */}
             <SectionDivider />
             {/* !Section RoadMap */}
-            <SEHeader2 />
             <SEHeader2Two />
             {/* Section Divider */}
             <SectionDivider />
