@@ -23,6 +23,7 @@ import StakeAllBox from "./OptionButtons/StakeALLBox";
 import UnstakeAllMines from "./OptionButtons/UnstakeAllMines";
 import StakeAllMines from "./OptionButtons/StakeAllMines";
 import StakeUnstakeNFTs from "./StakeUnstake";
+import TaskCenterApp from "./TaskCenter";
 
 const MinerStats = () => {
   const [isVerified, setIsVerified] = useState(null);
@@ -236,7 +237,7 @@ const MinerStats = () => {
             className="blog__item"
           >
             <p style={{ textAlign: "center" }}>Migrate Items to V2</p>
-            <p style={{ textAlign: "center" }}>(If you are new user just click on Mine)</p>
+            <p style={{ textAlign: "center" }}>(Only Old Users)</p>
             <div className="containerGrid">
               <UnstakeAllMines />
               <StakeAllMines />
@@ -250,7 +251,7 @@ const MinerStats = () => {
             className="blog__item"
           >
             <p style={{ textAlign: "center" }}>Migrate S. Items to V2</p>
-            <p style={{ textAlign: "center" }}>(If you are new user just click on Mine)</p>
+            <p style={{ textAlign: "center" }}>(Only Old Users)</p>
             <div className="containerGrid">
               <UnstakeAllBox />
               <StakeAllBox />
@@ -258,6 +259,9 @@ const MinerStats = () => {
           </div>
         </div>
         {/* !News Shotcode */}
+        <div>
+          <TaskCenterApp />
+        </div>
       </div>
     </section>
   );
