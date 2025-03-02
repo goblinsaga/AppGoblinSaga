@@ -109,7 +109,7 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#simple-earn-v3">
+                    <Link href="/defi#POL-Staking">
                       <a>
                         <span>POL/GSA Stake</span>
                       </a>
