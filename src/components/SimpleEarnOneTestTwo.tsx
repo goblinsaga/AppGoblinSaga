@@ -10,8 +10,6 @@ import ErrorMessagePopup from "./popups/ErrorMessagePopup";
 import SuccessMessagePopup from './popups/SuccessMessagePopup';
 import { stakingContractAddress } from "../../consts/Details2";
 import UserBalance from './UserStats/UserBalance';
-import XGsaTokenBalance from "./xGSABalance";
-import APRCalculatorTwo from './APRCalc2';
 
 const SEHeaderT: React.FC = () => {
     const address = useAddress();
