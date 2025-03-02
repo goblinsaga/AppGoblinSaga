@@ -108,7 +108,7 @@ export default function BusinessButton({ tokenId }: Props) {
             {successMessage && <SuccessMessagePopup message={successMessage} onClose={() => setSuccessMessage("")} />}
             {errorMessage && <ErrorMessagePopup message={errorMessage} onClose={() => setErrorMessage("")} />}
             <button className="metaportal_fn_buttonLW" onClick={claimAllRewards} disabled={isClaiming}>
-                {isClaiming ? "Claiming..." : "Claim Mines"}
+                {isClaiming ? "Claiming..." : "Claim Items"}
             </button>
         </div>
     );
