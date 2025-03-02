@@ -9,8 +9,8 @@ const TaskCenterApp = () => {
                             <img src="/img/MLGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p style={{ color: "yellow" }} className="task-title">Task Center</p>
-                            <p style={{ color: "yellow" }} className="task-reward">Earn $GSA <img style={{ marginTop: "-3px", width: "20px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
+                            <p className="task-title">Task Center</p>
+                            <p style={{ color: "yellow" }} className="task-reward">Earn $GSA <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
                             <p style={{ fontSize: "11px", marginTop: "-10px" }} className="task-reward">Claim every 12 Hours</p>
                         </div>
                         <div style={{ position: "relative", width: "150px", height: "45px", marginLeft: "-10px" }}>
