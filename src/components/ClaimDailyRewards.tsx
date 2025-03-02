@@ -1,7 +1,7 @@
-import ClaimRewardsNFTClaimThree from "./dailyrewardseight";
-import ClaimRewardsNFTClaim from "./dailyrewardsmint";
-import ClaimRewardsNFTClaimTwo from "./dailyrewardsseven";
-import ClaimRewardsNFTClaimBox from "./dailyrewardsten";
+import ClaimRewardsNFTClaimThree from "./TaskCenter/DailyRewardsEnchantedAmulet";
+import ClaimRewardsNFTClaim from "./TaskCenter/DailyRewardsGoblinNFT";
+import ClaimRewardsNFTClaimTwo from "./TaskCenter/DailyRewardsGPotion";
+import ClaimRewardsNFTClaimBox from "./TaskCenter/DailyRewardsBox";
 
 const ClaimDailyRewards = () => {
     return (
@@ -15,9 +15,9 @@ const ClaimDailyRewards = () => {
                             <img src="/img/MLGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p style={{ color: "yellow" }} className="task-title">Mint a Goblin NFT</p>
-                            <p style={{ color: "yellow" }} className="task-reward">+1000000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
-                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">14 Streaks = +1500000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
+                            <p className="task-title">Mint a Goblin NFT</p>
+                            <p style={{ color: "yellow" }} className="task-reward">+1000000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
+                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +1500000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="" /></p>
                         </div>
                         <div className="task-action">
                             <ClaimRewardsNFTClaim />
@@ -30,9 +30,9 @@ const ClaimDailyRewards = () => {
                             <img src="/img/MLGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p style={{ color: "yellow" }} className="task-title">Mint a Token Box Lvl.1</p>
-                            <p style={{ color: "yellow" }} className="task-reward">+1100000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
-                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">14 Streaks = +1600000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
+                            <p className="task-title">Mint a Token Box Lvl.1</p>
+                            <p style={{ color: "yellow" }} className="task-reward">+1100000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
+                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +1600000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="" /></p>
                         </div>
                         <div className="task-action">
                             <ClaimRewardsNFTClaimBox />
@@ -45,9 +45,9 @@ const ClaimDailyRewards = () => {
                             <img src="/img/MLGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p style={{ color: "yellow" }} className="task-title">Mint a Enchanted Amulet Lvl.3</p>
-                            <p style={{ color: "yellow" }} className="task-reward">+500000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
-                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">14 Streaks = +550000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
+                            <p className="task-title">Mint a Enchanted Amulet Lvl.3</p>
+                            <p style={{ color: "yellow" }} className="task-reward">+500000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
+                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +550000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="" /></p>
                         </div>
                         <div className="task-action">
                             <ClaimRewardsNFTClaimThree />
@@ -60,9 +60,9 @@ const ClaimDailyRewards = () => {
                             <img src="/img/MLGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p style={{ color: "yellow" }} className="task-title">Mint a Greed Potion Lvl.1</p>
-                            <p style={{ color: "yellow" }} className="task-reward">+300000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
-                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">14 Streaks = +350000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/LOGOS-GS-32x32.png" alt="" /></p>
+                            <p className="task-title">Mint a Greed Potion Lvl.1</p>
+                            <p style={{ color: "yellow" }} className="task-reward">+300000 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
+                            <p style={{ color: "yellow", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +350000 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="" /></p>
                         </div>
                         <div className="task-action">
                             <ClaimRewardsNFTClaimTwo />
