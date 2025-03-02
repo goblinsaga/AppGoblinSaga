@@ -238,8 +238,11 @@ const SEHeader2Two: React.FC = () => {
     };
 
     return (
-        <section style={{ marginTop: "-150px", marginBottom: "150px" }}>
-            <div id="POLGSA-Staking" className="container">
+        <section id="news">
+            <div id="POL-Staking" className="container">
+                <h3 className="fn__maintitle big" data-text="POL/GSA Staking" data-align="center">
+                    POL/GSA Staking
+                </h3>
                 <div className="fn_cs_news">
                     <div className="news_part">
                         <div className="left_items">
