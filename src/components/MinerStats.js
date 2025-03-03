@@ -206,7 +206,7 @@ const MinerStats = () => {
 
               <div id="migration" className="blog__item" style={{ height: "auto" }}>
                 <p style={{ textAlign: "center" }}>Migrate Goblins to V2</p>
-                <p style={{ textAlign: "center" }}>(If you are new user just click on Mine)</p>
+                <p style={{ textAlign: "center", fontSize: "12px" }}>(If you are new user just click on Mine)</p>
                 <div style={{ marginTop: "30px" }} className="right_bot">
                   <UnstakeAllNFT />
                 </div>
@@ -237,11 +237,12 @@ const MinerStats = () => {
             className="blog__item"
           >
             <p style={{ textAlign: "center" }}>Migrate Items to V2</p>
-            <p style={{ textAlign: "center" }}>(Only Old Users)</p>
+            <p style={{ textAlign: "center", fontSize: "11px" }}>(Only Old Users)</p>
             <div className="containerGrid">
               <UnstakeAllMines />
               <StakeAllMines />
             </div>
+            <p style={{ textAlign: "center", fontSize: "11px", marginTop: "10px" }}>If you have problems using Mine Button use Set Mine option on <a href="/shop" style={{ color: "green" }}>Shop</a></p>
           </div>
           <div
             style={{
@@ -251,11 +252,12 @@ const MinerStats = () => {
             className="blog__item"
           >
             <p style={{ textAlign: "center" }}>Migrate S. Items to V2</p>
-            <p style={{ textAlign: "center" }}>(Only Old Users)</p>
+            <p style={{ textAlign: "center", fontSize: "11px" }}>(Only Old Users)</p>
             <div className="containerGrid">
               <UnstakeAllBox />
               <StakeAllBox />
             </div>
+            <p style={{ textAlign: "center", fontSize: "11px", marginTop: "10px" }}>If you have problems using Mine Button use Set Mine option on <a href="/shop" style={{ color: "green" }}>Shop</a></p>
           </div>
         </div>
         {/* !News Shotcode */}
