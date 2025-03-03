@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { useAddress, useContract, useContractRead } from "@thirdweb-dev/react";
+import { useAddress, useContract } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
-import { STAKING_CONTRACT_ADDRESS } from "../../../consts/contracts2New";
+import { STAKING_CONTRACT_ADDRESS, BUSINESSES_CONTRACT_ADDRESS2 } from "../../../consts/contracts2New";
 import SuccessMessagePopup from "../popups/SuccessMessagePopup";
 import ErrorMessagePopup from "../popups/ErrorMessagePopup";
-import StakingContractABI from "../../../contracts/StakingContractBoxABI.json"; // Asegúrate de tener el ABI correcto
+import StakingContractABI from "../../../contracts/StakingContractBussinesABI.json";
+import NFTContractABI from "../../../contracts/BoxContractABI.json";
 
 const StakeAllBox: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isStaking, setIsStaking] = useState(false);
-
+    
     useEffect(() => {
         if (errorMessage) {
             const timer = setTimeout(() => setErrorMessage(''), 4000);
@@ -27,19 +28,10 @@ const StakeAllBox: React.FC = () => {
 
     const address = useAddress();
     const { contract: stakingContract } = useContract(STAKING_CONTRACT_ADDRESS, StakingContractABI);
-    const { data: stakedTokens } = useContractRead(stakingContract, "getStakeInfo", [address]);
+    const { contract: nftContract } = useContract(BUSINESSES_CONTRACT_ADDRESS2, NFTContractABI);
 
-    async function stakeAllNfts() {
-        if (!address || !stakedTokens) return;
-
-        const stakedTokenIds = stakedTokens[0]; // Array de IDs de NFTs en stake
-        const stakedTokenAmounts = stakedTokens[1]; // Array de cantidades correspondientes
-
-        if (!stakedTokenIds || stakedTokenIds.length === 0) {
-            console.log("No NFTs to stake.");
-            return;
-        }
-
+    async function approveAndStake() {
+        if (!address) return;
         try {
             setIsStaking(true);
             if (!window.ethereum) {
@@ -48,27 +40,51 @@ const StakeAllBox: React.FC = () => {
             }
 
             const provider = new ethers.providers.Web3Provider(window.ethereum);
-            await provider.send("eth_requestAccounts", []); // Solicita conexión de la billetera
+            await provider.send("eth_requestAccounts", []);
             const signer = provider.getSigner();
-            const stakingContract = new ethers.Contract(STAKING_CONTRACT_ADDRESS, StakingContractABI, signer);
 
-            // Agrupando las transacciones para que se procesen juntas
+            const nftContractInstance = new ethers.Contract(BUSINESSES_CONTRACT_ADDRESS2, NFTContractABI, signer);
+            const stakingContractInstance = new ethers.Contract(STAKING_CONTRACT_ADDRESS, StakingContractABI, signer);
+
+            // Verificar aprobación
+            const isApproved = await nftContractInstance.isApprovedForAll(address, STAKING_CONTRACT_ADDRESS);
+            if (!isApproved) {
+                console.log("Aprobando NFTs para staking...");
+                const approvalTx = await nftContractInstance.setApprovalForAll(STAKING_CONTRACT_ADDRESS, true);
+                await approvalTx.wait();
+                console.log("Aprobación completada.");
+            }
+
+            // Revisar qué NFTs tiene en cartera (IDs 0 al 8)
+            const stakedTokenIds = [];
+            const stakedTokenAmounts = [];
+            
+            for (let tokenId = 0; tokenId <= 8; tokenId++) {
+                const balance = await nftContractInstance.balanceOf(address, tokenId);
+                if (balance.gt(0)) {
+                    stakedTokenIds.push(tokenId);
+                    stakedTokenAmounts.push(balance.toNumber());
+                }
+            }
+
+            if (stakedTokenIds.length === 0) {
+                setErrorMessage("No NFTs to stake.");
+                return;
+            }
+
+            // Hacer el staking
             const txPromises = stakedTokenIds.map((tokenId, i) => {
                 const amount = stakedTokenAmounts[i];
-                // Hacer stake de todos los tokens en una transacción combinada
-                return stakingContract.stake(tokenId, amount);
+                return stakingContractInstance.stake(tokenId, amount, { gasLimit: 500000 });
             });
 
-            // Espera todas las transacciones en paralelo
             const txResults = await Promise.all(txPromises);
-            
-            // Espera a que todas las transacciones se confirmen
             await Promise.all(txResults.map(tx => tx.wait()));
 
             setSuccessMessage("All NFTs Staked Successfully");
         } catch (error) {
-            console.error(error);
-            setSuccessMessage("All NFTs Staked Successfully");
+            console.error("Error during staking:", error);
+            setErrorMessage("Failed to stake NFTs: " + error.message);
         } finally {
             setIsStaking(false);
         }
@@ -79,7 +95,7 @@ const StakeAllBox: React.FC = () => {
             {successMessage && <SuccessMessagePopup message={successMessage} onClose={() => setSuccessMessage('')} />}
             {errorMessage && <ErrorMessagePopup message={errorMessage} onClose={() => setErrorMessage('')} />}
             <button
-                onClick={stakeAllNfts}
+                onClick={approveAndStake}
                 disabled={isStaking}
                 className="metaportal_fn_buttonLW"
             >
