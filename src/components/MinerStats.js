@@ -39,9 +39,6 @@ const MinerStats = () => {
       <div style={{ marginBottom: "30px" }}>
         <NewUsers />
       </div>
-      <div style={{ marginBottom: "30px", marginTop: "30px" }}>
-        <NewUsersTwo />
-      </div>
       <div id="apps" className="container">
         {/* News Shotcode */}
         <div className="fn_cs_news">
@@ -117,9 +114,9 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#simple-earn-v2">
+                    <Link href="/defi#GSA-WGSA-Stake">
                       <a>
-                        <span>GSA/wGSA Stake (Soon)</span>
+                        <span>GSA/wGSA Stake</span>
                       </a>
                     </Link>
                   </div>
@@ -127,6 +124,13 @@ const MinerStats = () => {
                     <Link href="/defi#token-migration">
                       <a>
                         <span>Token Migration</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi">
+                      <a>
+                        <span>WGSA/GSA Swap (Soon)</span>
                       </a>
                     </Link>
                   </div>
@@ -264,6 +268,9 @@ const MinerStats = () => {
         <div>
           <TaskCenterApp />
         </div>
+      </div>
+      <div style={{ marginBottom: "30px", marginTop: "30px" }}>
+        <NewUsersTwo />
       </div>
     </section>
   );
