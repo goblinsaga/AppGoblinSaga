@@ -73,7 +73,7 @@ function BlockedWalletChecker({ children }) {
   const address = useAddress();
 
   // Cadena de direcciones bloqueadas separadas por comas
-  const blockedAddressesString = "0x587c6a42D33629a8Da9Cd98b90cAe8c914440f2A";
+  const blockedAddressesString = "0x587c6a42D33629a8Da9Cd98b90cAe8c914440f2A, 0x5cad1edf6bbf8baa75d384f8c2b3b38b7107ec80";
 
   // Convertir la cadena en un array de direcciones
   const blockedAddresses = blockedAddressesString
