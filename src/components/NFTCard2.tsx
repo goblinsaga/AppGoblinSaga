@@ -87,19 +87,12 @@ export default function NFTCard({ nft }: Props) {
 
     const handleClaim = async () => {
         if (!address) {
-            setErrorMessage('Error: No wallet connected.');
             return;
         }
 
         setClaimState("nftClaim");
         try {
-            // Check if the contract is loaded
-            if (!businessesContract) {
-                throw new Error("Contract not loaded.");
-            }
-
-            // Attempt to claim the NFT
-            await businessesContract.erc1155.claim(nft.metadata.id, quantity);
+            await businessesContract?.erc1155.claim(nft.metadata.id, quantity);
             console.log("NFT claimed");
 
             setClaimState("staking");
