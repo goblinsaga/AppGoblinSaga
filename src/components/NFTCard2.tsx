@@ -87,12 +87,19 @@ export default function NFTCard({ nft }: Props) {
 
     const handleClaim = async () => {
         if (!address) {
+            setErrorMessage('Error: No wallet connected.');
             return;
         }
 
         setClaimState("nftClaim");
         try {
-            await businessesContract?.erc1155.claim(nft.metadata.id, quantity);
+            // Check if the contract is loaded
+            if (!businessesContract) {
+                throw new Error("Contract not loaded.");
+            }
+
+            // Attempt to claim the NFT
+            await businessesContract.erc1155.claim(nft.metadata.id, quantity);
             console.log("NFT claimed");
 
             setClaimState("staking");
@@ -111,44 +118,26 @@ export default function NFTCard({ nft }: Props) {
         }
     };
 
-    const handleClaim = async () => {
-        if (!address) {
-            setErrorMessage('Error: No wallet connected.');
-            return;
-        }
-    
-        setClaimState("nftClaim");
+    const handleStake = async () => {
         try {
-            // Check if the contract is loaded
-            if (!businessesContract) {
-                throw new Error("Contract not loaded.");
+            if (!address || !businessesContract || !stakingContract) {
+                throw new Error("Faltan datos necesarios para realizar el staking.");
             }
-    
-            // Check if the address has enough balance
-            const balance = await businessesContract.call("balanceOf", [address, nft.metadata.id]);
-            if (balance.lt(quantity)) {
-                throw new Error("Insufficient NFT balance.");
-            }
-    
-            // Check if the address has approved the contract
-            const isApproved = await businessesContract.call("isApprovedForAll", [address, STAKING_CONTRACT_ADDRESS]);
+
+            // Verificar aprobación utilizando el método `call`
+            const isApproved = await businessesContract?.call("isApprovedForAll", [address, STAKING_CONTRACT_ADDRESS]);
             if (!isApproved) {
-                await businessesContract.call("setApprovalForAll", [STAKING_CONTRACT_ADDRESS, true]);
+                console.log("Solicitando aprobación para el contrato de staking...");
+                await businessesContract?.call("setApprovalForAll", [STAKING_CONTRACT_ADDRESS, true]);
+                console.log("Aprobación completada.");
             }
-    
-            // Attempt to claim the NFT
-            await businessesContract.erc1155.claim(nft.metadata.id, quantity);
-            console.log("NFT claimed");
-    
-            setClaimState("staking");
+
+            // Realizar staking
             await stakingContract?.call("stake", [nft.metadata.id, quantity]);
-    
-            setSuccessMessage('Mine Claimed');
+            setSuccessMessage('Mine Claimed Successfully');
         } catch (error) {
-            console.error(error);
-            setErrorMessage(`Error: ${error.message}`);
-        } finally {
-            setClaimState("init");
+            console.error("Error en handleStake:", error);
+            setErrorMessage('Error: Not enough NFTs to Mine or Transaction rejected');
         }
     };
 
