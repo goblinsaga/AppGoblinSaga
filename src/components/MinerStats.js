@@ -121,16 +121,16 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#token-migration">
+                    <Link href="/defi">
                       <a>
-                        <span>Token Migration</span>
+                        <span>WGSA/GSA Swap</span>
                       </a>
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi">
+                    <Link href="/defi#token-migration">
                       <a>
-                        <span>WGSA/GSA Swap (Soon)</span>
+                        <span>Token Migration</span>
                       </a>
                     </Link>
                   </div>
