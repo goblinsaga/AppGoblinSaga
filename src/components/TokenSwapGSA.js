@@ -322,6 +322,9 @@ const TokenSwap = () => {
                                 <div>
                                     <PolygonGasPrice />
                                 </div>
+                                <div>
+                                    <p style={{ textAlign: "center", fontSize: "11px", marginTop: "10px" }}>If you are trying to migrate more than 5M please open a support ticket at <a href="https://discord.com/invite/RSyZuSJN5z" target="_blank" style={{ color: "green" }}>Discord</a></p>
+                                </div>
                             </div>
                         </div>
                         <div className="right_items">
