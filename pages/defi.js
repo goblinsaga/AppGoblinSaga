@@ -5,6 +5,7 @@ import SectionDivider from "../src/components/SectionDivider";
 import Faq from "../src/components/Faq";
 import Layout from "../src/layout/Layout";
 import TokenSwap from "../src/components/TokenSwapGSA";
+import TokenSwapWGSA from "../src/components/TokenSwapWGSA";
 
 const DeFi = () => {
     return (
@@ -19,6 +20,10 @@ const DeFi = () => {
             {/* Section Divider */}
             <SEHeaderT />
             <SEHeaderH />
+
+            <SectionDivider />
+
+            <TokenSwapWGSA />
 
             <SectionDivider />
 
