@@ -159,7 +159,7 @@ const LiquidityManagerTwo = () => {
     return (
         <section id="news">
             <div className="container">
-                <h3 className="fn__maintitle big" data-text="Liquidity Management" data-align="center">
+                <h3 className="fn__maintitle big" data-text="Liquidity Management WGSA" data-align="center">
                     Liquidity Management WGSA
                 </h3>
 
