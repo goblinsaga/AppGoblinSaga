@@ -61,7 +61,7 @@ const SEv3Rewards: React.FC = () => {
     // Agrega aquí el resto de funciones que necesites en el ABI
   ]; // ABI del contrato
 
-  const rewardRate = 2000; // Recompensa fija por MATIC
+  const rewardRate = 2000; // Recompensa fija por USDC
   const rewardDuration = 48 * 60 * 60; // 48 horas en segundos
 
   useEffect(() => {
