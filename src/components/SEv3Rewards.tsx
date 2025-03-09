@@ -9,12 +9,10 @@ const SEv3Rewards: React.FC = () => {
   const [userStakeInfo, setUserStakeInfo] = useState<any>(null);
   const [realtimeRewards, setRealtimeRewards] = useState<string>("0");
 
-  const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1"; // Dirección del contrato
+  const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1";
   const stakingContractABI = [
     {
-      "inputs": [
-        { "internalType": "address", "name": "_rewardToken", "type": "address" }
-      ],
+      "inputs": [{ "internalType": "address", "name": "_rewardToken", "type": "address" }],
       "stateMutability": "nonpayable",
       "type": "constructor"
     },
@@ -44,63 +42,56 @@ const SEv3Rewards: React.FC = () => {
       "stateMutability": "view",
       "type": "function"
     },
-    {
-      "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
-      "name": "withdraw",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
-      "inputs": [],
-      "name": "stake",
-      "outputs": [],
-      "stateMutability": "payable",
-      "type": "function"
-    },
-    // Agrega aquí el resto de funciones que necesites en el ABI
-  ]; // ABI del contrato
+  ];
 
-  const rewardRate = 2000; // Recompensa fija por USDC
-  const rewardDuration = 48 * 60 * 60; // 48 horas en segundos
+  const rewardRate = 2000;
+  const rewardDuration = 48 * 60 * 60;
 
   useEffect(() => {
-    if (window.ethereum) {
-      const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-      setProvider(web3Provider);
-
-      const stakingContract = new ethers.Contract(contractAddress, stakingContractABI, web3Provider.getSigner());
-      setContract(stakingContract);
+    if (!window.ethereum) {
+      console.error("No se encontró MetaMask o un proveedor de Ethereum.");
+      return;
     }
+
+    const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+    setProvider(web3Provider);
+
+    const stakingContract = new ethers.Contract(contractAddress, stakingContractABI, web3Provider.getSigner());
+    setContract(stakingContract);
   }, []);
 
   useEffect(() => {
     if (contract && address) {
       fetchStakeInfo();
-      // Actualiza las recompensas más rápidamente
+    }
+  }, [contract, address]);
+
+  useEffect(() => {
+    if (userStakeInfo) {
       const interval = setInterval(() => {
         calculateRealtimeRewards();
-      }, 1000); // 1 segundo
+      }, 1000);
 
-      // Limpiar intervalo al desmontar el componente
       return () => clearInterval(interval);
     }
-  }, [contract, address, userStakeInfo]);
+  }, [userStakeInfo]);
 
   const fetchStakeInfo = async () => {
     try {
+      console.log("Obteniendo información del stake para:", address);
       const stakeInfo = await contract?.getStakeInfo(address);
+      console.log("Respuesta del contrato:", stakeInfo);
+
       if (stakeInfo) {
-        const formattedStakeInfo = {
-          amountStaked: ethers.utils.formatUnits(stakeInfo.amountStaked, 6), // USDC tiene 6 decimales
+        setUserStakeInfo({
+          amountStaked: ethers.utils.formatUnits(stakeInfo.amountStaked, 6),
           amountLocked: ethers.utils.formatUnits(stakeInfo.amountLocked, 6),
-          lastClaimTime: stakeInfo.lastClaimTime.toNumber(), // Timestamp
-          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18), // GSA tiene 18 decimales
-        };
-        setUserStakeInfo(formattedStakeInfo);
+          lastClaimTime: stakeInfo.lastClaimTime.toNumber(),
+          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18),
+        });
       }
     } catch (error) {
-      console.error("Error fetching stake info:", error);
+      console.error("Error al obtener la información del stake:", error);
     }
   };
 
@@ -108,32 +99,22 @@ const SEv3Rewards: React.FC = () => {
     if (!userStakeInfo) return;
 
     const { amountStaked, lastClaimTime } = userStakeInfo;
+    const currentTime = Math.floor(Date.now() / 1000);
+    const timeStaked = currentTime - lastClaimTime;
 
-    // Obtener el tiempo actual y el tiempo que ha pasado desde la última reclamación
-    const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
-    const timeStaked = currentTime - lastClaimTime; // Tiempo en segundos desde la última reclamación
+    if (timeStaked <= 0 || amountStaked === "0.0") {
+      setRealtimeRewards("0.00");
+      return;
+    }
 
-    // Convertir `amountStaked` a BigNumber para cálculos (USDC tiene 6 decimales)
     const amountStakedBN = ethers.utils.parseUnits(amountStaked, 6);
-
-    // Calcular recompensas acumuladas
-    const accruedRewardsBN = amountStakedBN
-      .mul(rewardRate)
-      .mul(timeStaked)
-      .div(rewardDuration);
-
-    // Convertir de BigNumber a un número decimal legible (GSA tiene 18 decimales)
+    const accruedRewardsBN = amountStakedBN.mul(rewardRate).mul(timeStaked).div(rewardDuration);
     const accruedRewards = ethers.utils.formatUnits(accruedRewardsBN, 18);
-    const formattedAccruedRewards = parseFloat(accruedRewards).toFixed(2);
-
-    setRealtimeRewards(formattedAccruedRewards);
+    
+    setRealtimeRewards(parseFloat(accruedRewards).toFixed(2));
   };
 
-  return (
-    <div>
-      <p>{realtimeRewards} GSA</p>
-    </div>
-  );
+  return <div><p>{realtimeRewards} GSA</p></div>;
 };
 
 export default SEv3Rewards;
