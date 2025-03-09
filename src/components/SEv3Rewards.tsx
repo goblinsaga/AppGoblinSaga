@@ -12,21 +12,6 @@ const SEv3Rewards: React.FC = () => {
   const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1"; // Dirección del contrato
   const stakingContractABI = [
     {
-      "inputs": [
-        { "internalType": "address", "name": "_rewardToken", "type": "address" },
-        { "internalType": "address", "name": "_stakingToken", "type": "address" }
-      ],
-      "stateMutability": "nonpayable",
-      "type": "constructor"
-    },
-    {
-      "inputs": [],
-      "name": "claimRewards",
-      "outputs": [],
-      "stateMutability": "nonpayable",
-      "type": "function"
-    },
-    {
       "inputs": [{ "internalType": "address", "name": "_user", "type": "address" }],
       "name": "getStakeInfo",
       "outputs": [
@@ -94,7 +79,7 @@ const SEv3Rewards: React.FC = () => {
     }
   };
 
-  const calculateRealtimeRewards = () => {
+  const calculateRealtimeRewards = async () => {
     if (!userStakeInfo) return;
 
     const { amountStaked, lastClaimTime } = userStakeInfo;
@@ -103,12 +88,12 @@ const SEv3Rewards: React.FC = () => {
     const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
     const timeStaked = currentTime - lastClaimTime; // Tiempo en segundos desde la última reclamación
 
+    // Obtener GSA_PER_USDC y TIME_UNIT del contrato
+    const gsaPerUsdc = await contract?.GSA_PER_USDC();
+    const timeUnit = await contract?.TIME_UNIT();
+
     // Convertir `amountStaked` a BigNumber para cálculos (USDC tiene 6 decimales)
     const amountStakedBN = ethers.utils.parseUnits(amountStaked, 6);
-
-    // Obtener GSA_PER_USDC y TIME_UNIT del contrato
-    const gsaPerUsdc = ethers.BigNumber.from(2000); // Recompensa fija por USDC
-    const timeUnit = ethers.BigNumber.from(48 * 60 * 60); // 48 horas en segundos
 
     // Calcular recompensas acumuladas
     const accruedRewardsBN = amountStakedBN
@@ -125,7 +110,7 @@ const SEv3Rewards: React.FC = () => {
 
   return (
     <div>
-      <p>{realtimeRewards} WGSA</p>
+      <p>{realtimeRewards} GSA</p>
     </div>
   );
 };
