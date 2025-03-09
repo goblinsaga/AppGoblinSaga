@@ -13,7 +13,8 @@ const SEv3Rewards: React.FC = () => {
   const stakingContractABI = [
     {
       "inputs": [
-        { "internalType": "address", "name": "_rewardToken", "type": "address" }
+        { "internalType": "address", "name": "_rewardToken", "type": "address" },
+        { "internalType": "address", "name": "_stakingToken", "type": "address" }
       ],
       "stateMutability": "nonpayable",
       "type": "constructor"
@@ -52,10 +53,10 @@ const SEv3Rewards: React.FC = () => {
       "type": "function"
     },
     {
-      "inputs": [],
+      "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
       "name": "stake",
       "outputs": [],
-      "stateMutability": "payable",
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     // Agrega aquí el resto de funciones que necesites en el ABI
