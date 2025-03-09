@@ -5,7 +5,7 @@ const WGsaTokenBalance = () => {
   const [balance, setBalance] = useState(null);
   const [provider, setProvider] = useState(null); // Estado para el proveedor
   const tokenAddress = '0x6f5c47c85E55ef4E0d17c4d221C79d0e7a0A4650'; // Dirección del token GSA
-  const contractAddress = '0x1676961d30A44AC2BD6DF49189a44d05B0B42F8D'; // Dirección del contrato donde queremos verificar el balance
+  const contractAddress = '0x06d3A4A70eeEc01aA963767F431AEb409066b3fe'; // Dirección del contrato donde queremos verificar el balance
 
   const tokenABI = [
     // ABI mínima para balanceOf
