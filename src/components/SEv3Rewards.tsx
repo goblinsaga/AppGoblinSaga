@@ -9,7 +9,7 @@ const SEv3Rewards: React.FC = () => {
   const [userStakeInfo, setUserStakeInfo] = useState<any>(null);
   const [realtimeRewards, setRealtimeRewards] = useState<string>("0");
 
-  const contractAddress = "0x1676961d30A44AC2BD6DF49189a44d05B0B42F8D"; // Dirección del contrato
+  const contractAddress = "0x06d3A4A70eeEc01aA963767F431AEb409066b3fe"; // Dirección del contrato
   const stakingContractABI = [
     {
       "inputs": [
