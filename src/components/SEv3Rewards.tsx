@@ -12,6 +12,27 @@ const SEv3Rewards: React.FC = () => {
   const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1"; // Dirección del contrato
   const stakingContractABI = [
     {
+      "inputs": [
+        { "internalType": "address", "name": "_rewardToken", "type": "address" }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "claimRewards",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getRewardTokenBalance",
+      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
       "inputs": [{ "internalType": "address", "name": "_user", "type": "address" }],
       "name": "getStakeInfo",
       "outputs": [
@@ -24,20 +45,24 @@ const SEv3Rewards: React.FC = () => {
       "type": "function"
     },
     {
-      "inputs": [],
-      "name": "GSA_PER_USDC",
-      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-      "stateMutability": "view",
+      "inputs": [{ "internalType": "uint256", "name": "_amount", "type": "uint256" }],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
       "type": "function"
     },
     {
       "inputs": [],
-      "name": "TIME_UNIT",
-      "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-      "stateMutability": "view",
+      "name": "stake",
+      "outputs": [],
+      "stateMutability": "payable",
       "type": "function"
-    }
-  ]; // ABI simplificado
+    },
+    // Agrega aquí el resto de funciones que necesites en el ABI
+  ]; // ABI del contrato
+
+  const rewardRate = 2000; // Recompensa fija por MATIC
+  const rewardDuration = 48 * 60 * 60; // 48 horas en segundos
 
   useEffect(() => {
     if (window.ethereum) {
@@ -55,7 +80,7 @@ const SEv3Rewards: React.FC = () => {
       // Actualiza las recompensas más rápidamente
       const interval = setInterval(() => {
         calculateRealtimeRewards();
-      }, 1000); // 1 segundo
+      }, 100); // 100 ms = 0.1 segundo
 
       // Limpiar intervalo al desmontar el componente
       return () => clearInterval(interval);
@@ -67,10 +92,10 @@ const SEv3Rewards: React.FC = () => {
       const stakeInfo = await contract?.getStakeInfo(address);
       if (stakeInfo) {
         const formattedStakeInfo = {
-          amountStaked: ethers.utils.formatUnits(stakeInfo.amountStaked, 6), // USDC tiene 6 decimales
-          amountLocked: ethers.utils.formatUnits(stakeInfo.amountLocked, 6),
+          amountStaked: ethers.utils.formatEther(stakeInfo.amountStaked),
+          amountLocked: ethers.utils.formatEther(stakeInfo.amountLocked),
           lastClaimTime: stakeInfo.lastClaimTime.toNumber(), // Timestamp
-          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18), // GSA tiene 18 decimales
+          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18),
         };
         setUserStakeInfo(formattedStakeInfo);
       }
@@ -79,7 +104,7 @@ const SEv3Rewards: React.FC = () => {
     }
   };
 
-  const calculateRealtimeRewards = async () => {
+  const calculateRealtimeRewards = () => {
     if (!userStakeInfo) return;
 
     const { amountStaked, lastClaimTime } = userStakeInfo;
@@ -88,20 +113,16 @@ const SEv3Rewards: React.FC = () => {
     const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
     const timeStaked = currentTime - lastClaimTime; // Tiempo en segundos desde la última reclamación
 
-    // Obtener GSA_PER_USDC y TIME_UNIT del contrato
-    const gsaPerUsdc = await contract?.GSA_PER_USDC();
-    const timeUnit = await contract?.TIME_UNIT();
-
-    // Convertir `amountStaked` a BigNumber para cálculos (USDC tiene 6 decimales)
-    const amountStakedBN = ethers.utils.parseUnits(amountStaked, 6);
+    // Convertir `amountStaked` a BigNumber para cálculos
+    const amountStakedBN = ethers.utils.parseUnits(amountStaked, 18);
 
     // Calcular recompensas acumuladas
     const accruedRewardsBN = amountStakedBN
-      .mul(gsaPerUsdc)
+      .mul(rewardRate)
       .mul(timeStaked)
-      .div(timeUnit);
+      .div(rewardDuration);
 
-    // Convertir de BigNumber a un número decimal legible (GSA tiene 18 decimales)
+    // Convertir de BigNumber a un número decimal legible y limitar a 4 decimales
     const accruedRewards = ethers.utils.formatUnits(accruedRewardsBN, 18);
     const formattedAccruedRewards = parseFloat(accruedRewards).toFixed(2);
 
@@ -110,7 +131,7 @@ const SEv3Rewards: React.FC = () => {
 
   return (
     <div>
-      <p>{realtimeRewards} GSA</p>
+      <p>{realtimeRewards} WGSA</p>
     </div>
   );
 };
