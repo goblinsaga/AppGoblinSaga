@@ -9,7 +9,7 @@ const SEv3Rewards: React.FC = () => {
   const [userStakeInfo, setUserStakeInfo] = useState<any>(null);
   const [realtimeRewards, setRealtimeRewards] = useState<string>("0");
 
-  const contractAddress = "0x06d3A4A70eeEc01aA963767F431AEb409066b3fe"; // Dirección del contrato
+  const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1"; // Dirección del contrato
   const stakingContractABI = [
     {
       "inputs": [
@@ -61,7 +61,7 @@ const SEv3Rewards: React.FC = () => {
     // Agrega aquí el resto de funciones que necesites en el ABI
   ]; // ABI del contrato
 
-  const rewardRate = 1500; // Recompensa fija por MATIC
+  const rewardRate = 2000; // Recompensa fija por MATIC
   const rewardDuration = 48 * 60 * 60; // 48 horas en segundos
 
   useEffect(() => {
