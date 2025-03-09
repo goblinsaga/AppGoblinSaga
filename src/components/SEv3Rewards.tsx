@@ -80,7 +80,7 @@ const SEv3Rewards: React.FC = () => {
       // Actualiza las recompensas más rápidamente
       const interval = setInterval(() => {
         calculateRealtimeRewards();
-      }, 100); // 100 ms = 0.1 segundo
+      }, 1000); // 1 segundo
 
       // Limpiar intervalo al desmontar el componente
       return () => clearInterval(interval);
@@ -92,10 +92,10 @@ const SEv3Rewards: React.FC = () => {
       const stakeInfo = await contract?.getStakeInfo(address);
       if (stakeInfo) {
         const formattedStakeInfo = {
-          amountStaked: ethers.utils.formatEther(stakeInfo.amountStaked),
-          amountLocked: ethers.utils.formatEther(stakeInfo.amountLocked),
+          amountStaked: ethers.utils.formatUnits(stakeInfo.amountStaked, 6), // USDC tiene 6 decimales
+          amountLocked: ethers.utils.formatUnits(stakeInfo.amountLocked, 6),
           lastClaimTime: stakeInfo.lastClaimTime.toNumber(), // Timestamp
-          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18),
+          gsaRewards: ethers.utils.formatUnits(stakeInfo.gsaRewards, 18), // GSA tiene 18 decimales
         };
         setUserStakeInfo(formattedStakeInfo);
       }
@@ -113,8 +113,8 @@ const SEv3Rewards: React.FC = () => {
     const currentTime = Math.floor(Date.now() / 1000); // Tiempo actual en segundos
     const timeStaked = currentTime - lastClaimTime; // Tiempo en segundos desde la última reclamación
 
-    // Convertir `amountStaked` a BigNumber para cálculos
-    const amountStakedBN = ethers.utils.parseUnits(amountStaked, 18);
+    // Convertir `amountStaked` a BigNumber para cálculos (USDC tiene 6 decimales)
+    const amountStakedBN = ethers.utils.parseUnits(amountStaked, 6);
 
     // Calcular recompensas acumuladas
     const accruedRewardsBN = amountStakedBN
@@ -122,7 +122,7 @@ const SEv3Rewards: React.FC = () => {
       .mul(timeStaked)
       .div(rewardDuration);
 
-    // Convertir de BigNumber a un número decimal legible y limitar a 4 decimales
+    // Convertir de BigNumber a un número decimal legible (GSA tiene 18 decimales)
     const accruedRewards = ethers.utils.formatUnits(accruedRewardsBN, 18);
     const formattedAccruedRewards = parseFloat(accruedRewards).toFixed(2);
 
@@ -131,7 +131,7 @@ const SEv3Rewards: React.FC = () => {
 
   return (
     <div>
-      <p>{realtimeRewards} WGSA</p>
+      <p>{realtimeRewards} GSA</p>
     </div>
   );
 };
