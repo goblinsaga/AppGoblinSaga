@@ -60,7 +60,7 @@ const stakingContractABI = [
     // Agrega aquí el resto de funciones que necesites en el ABI
 ];
 
-const contractAddress = "0x0134068820cee34aa11806158c7f7386da29b4f1"; // Dirección del nuevo contrato
+const contractAddress = "0x1676961d30A44AC2BD6DF49189a44d05B0B42F8D"; // Dirección del nuevo contrato
 const usdcAddress = "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359"; // Reemplaza con la dirección del contrato USDC
 
 const SEHeaderThree: React.FC = () => {
@@ -260,11 +260,8 @@ const SEHeaderThree: React.FC = () => {
     };
 
     return (
-        <section id="news">
-            <div id="USDC-Staking" className="container">
-                <h3 className="fn__maintitle big" data-text="USDC/WGSA Staking" data-align="center">
-                    USDC/WGSA Staking
-                </h3>
+        <section>
+            <div id="USDC-Staking">
                 <div className="fn_cs_news">
                     <div className="news_part">
                         <div className="left_items">
@@ -320,8 +317,8 @@ const SEHeaderThree: React.FC = () => {
                                         <WGsaTokenBalance />
                                     </div>
                                     <div className="blog__item" style={{ marginTop: "30px", marginBottom: "30px" }}>
-                                        <p style={{ color: "yellow" }}>APR: 36.4%</p>
-                                        <p>1 USDC = 2000 $WGSA/48H</p>
+                                        <p style={{ color: "yellow" }}>APR: 9.125%</p>
+                                        <p>1 USDC = 100 $WGSA/48H</p>
                                     </div>
                                 </div>
                             </div>
