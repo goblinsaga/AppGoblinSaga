@@ -317,8 +317,8 @@ const SEHeaderThree: React.FC = () => {
                                         <WGsaTokenBalance />
                                     </div>
                                     <div className="blog__item" style={{ marginTop: "30px", marginBottom: "30px" }}>
-                                        <p style={{ color: "yellow" }}>APR: 9.125%</p>
-                                        <p>1 USDC = 100 $WGSA/48H</p>
+                                        <p style={{ color: "yellow" }}>APR: 36.4%</p>
+                                        <p>1 USDC = 2000 $WGSA/48H</p>
                                     </div>
                                 </div>
                             </div>
