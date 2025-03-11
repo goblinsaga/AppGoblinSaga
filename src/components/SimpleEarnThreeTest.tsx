@@ -60,7 +60,7 @@ const stakingContractABI = [
     // Agrega aquí el resto de funciones que necesites en el ABI
 ];
 
-const contractAddress = "0x1676961d30A44AC2BD6DF49189a44d05B0B42F8D"; // Dirección del nuevo contrato
+const contractAddress = "0x0134068820CEe34aa11806158C7f7386Da29b4F1"; // Dirección del nuevo contrato
 const usdcAddress = "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359"; // Reemplaza con la dirección del contrato USDC
 
 const SEHeaderThree: React.FC = () => {
