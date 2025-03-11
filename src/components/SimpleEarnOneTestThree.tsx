@@ -175,8 +175,8 @@ const SEHeaderH: React.FC = () => {
     };
 
     return (
-        <section style={{ marginBottom: "100px", marginTop: "-100px" }}>
-            <div id="GSA-WGSA-Stake" className="container">
+        <section>
+            <div id="GSA-WGSA-Stake">
                 <div className="fn_cs_news">
                     <div className="news_part">
                         <div className="left_items">
