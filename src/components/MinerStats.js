@@ -99,6 +99,7 @@ const MinerStats = () => {
                   <div className="meta">
                     <p>Menu App</p>
                   </div>
+                  
                   <div className="read_more">
                     <Link href="/shop">
                       <a>
@@ -107,23 +108,9 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#POL-Staking">
+                    <Link href="/defi#token-migration">
                       <a>
-                        <span>POL Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#USDC-Staking">
-                      <a>
-                        <span>USDC Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#GSA-WGSA-Stake">
-                      <a>
-                        <span>GSA Stake</span>
+                        <span>GSA Migration</span>
                       </a>
                     </Link>
                   </div>
@@ -135,9 +122,23 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#token-migration">
+                    <Link href="/defi#POL-Staking">
                       <a>
-                        <span>Token Migration</span>
+                        <span>POL/GSA Stake</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi#GSA-WGSA-Stake">
+                      <a>
+                        <span>GSA/WGSA Stake</span>
+                      </a>
+                    </Link>
+                  </div>
+                  <div className="read_more">
+                    <Link href="/defi#USDC-Staking">
+                      <a>
+                        <span>USDC/WGSA Stake</span>
                       </a>
                     </Link>
                   </div>
