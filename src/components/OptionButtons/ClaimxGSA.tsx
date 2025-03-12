@@ -51,7 +51,7 @@ const ClaimxGSA = () => {
       const tx = await stakingContract.claimRewards();
       await tx.wait(); // Espera a que la transacción sea minada
 
-      setSuccessMessage('xGSA Claimed');
+      setSuccessMessage('$GSA Claimed');
     } catch (error) {
       setErrorMessage('Error: Transaction rejected or insufficient funds.');
     } finally {
