@@ -159,7 +159,7 @@ const TokenSwapWGSA = () => {
                     ? await migrationContract.swapOldtoNew(ethers.utils.parseUnits(adjustedAmount.toString(), 18))
                     : await migrationContract.swapNewtoOld(ethers.utils.parseUnits(adjustedAmount.toString(), 18));
                 await swapTx.wait();
-                setSuccessMessage(`Successful Swap: ${adjustedAmount} ${isOldToNew ? 'Old Token' : 'New Token'} for ${isOldToNew ? 'New Token' : 'Old Token'}.`);
+                setSuccessMessage(`Successful Swap: ${adjustedAmount} ${isOldToNew ? 'WGSA' : 'GSA'} for ${isOldToNew ? 'GSA' : 'GSA'}.`);
                 await fetchRateAndBalance();
             } catch (err) {
                 console.error("Error on Swap:", err);
