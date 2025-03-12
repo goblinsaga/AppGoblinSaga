@@ -142,6 +142,13 @@ const MinerStats = () => {
                       </a>
                     </Link>
                   </div>
+                  <div className="read_more">
+                    <Link href="/defi#defi-stake">
+                      <a>
+                        <span>ankrPOL/WGSA Stake</span>
+                      </a>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
