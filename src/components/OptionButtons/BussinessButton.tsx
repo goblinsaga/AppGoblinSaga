@@ -94,7 +94,7 @@ export default function BusinessButton({ tokenId }: Props) {
                 await Promise.all(batchTransaction);
             }
 
-            setSuccessMessage("All Revenue Claimed");
+            setSuccessMessage("$GSA Claimed");
         } catch (error) {
             console.error("Batch transaction error:", error);
             setErrorMessage("Error: Transaction rejected or insufficient funds.");
