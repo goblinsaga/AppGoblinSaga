@@ -3,6 +3,7 @@ import SEHeaderH from "./SimpleEarnOneTestThree";
 import SEHeader2Two from "./SimpleEarnTwoTestTwo";
 import SEHeaderThree from "./SimpleEarnThreeTest";
 import SEHeaderFour from "./SimpleEarnFourTest";
+import SEHeaderFive from "./SimpleEarnFiveTest";
 
 const StakeGSA = () => {
     // Estados para controlar la visibilidad de cada componente
@@ -10,6 +11,7 @@ const StakeGSA = () => {
     const [showSEHeader2Two, setShowSEHeader2Two] = useState(false);
     const [showSEHeaderThree, setShowSEHeaderThree] = useState(false);
     const [showSEHeaderFour, setShowSEHeaderFour] = useState(false);
+    const [showSEHeaderFive, setShowSEHeaderFive] = useState(false);
 
     return (
         <section id="news" style={{ marginTop: "-200px" }}>
@@ -129,7 +131,7 @@ const StakeGSA = () => {
                             <img src="/img/ankrPOL-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">ankrPOL/WGSA</p>
+                            <p className="task-title">ankrPOL/WGSA🔥</p>
                         </div>
                         <div className="task-action">
                             <p className="task-reward">APR: 72.98%</p>
@@ -144,6 +146,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
+                        onClick={() => setShowSEHeaderFive(!showSEHeaderFive)}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -158,13 +161,17 @@ const StakeGSA = () => {
                             <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">aPolWMATIC/WGSA</p>
+                            <p className="task-title">aPolWMATIC/WGSA🔥</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">Coming Soon</p>
+                            <p className="task-reward">APR: 74.08%</p>
                         </div>
                     </div>
-
+                    {showSEHeaderFive && (
+                        <div>
+                            <SEHeaderFive />
+                        </div>
+                    )}
                 </div>
             </div>
 
