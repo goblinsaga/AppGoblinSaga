@@ -359,7 +359,7 @@ const SEHeaderFive: React.FC = () => {
                                     <p>aPolWMATIC Staked</p>
                                 </div>
                                 <div className="title">
-                                    <h3>{userStakeInfo ? parseFloat(userStakeInfo.amountStaked).toFixed(10) : "Loading..."}</h3>
+                                    <h3>{userStakeInfo ? parseFloat(userStakeInfo.amountStaked).toFixed(1) : "Loading..."}</h3>
                                     <p style={{ fontSize: "11px" }}><span style={{ color: "yellow" }}>20%</span> of the interest generated will go to GSA LP.</p>
                                 </div>
                                 <div className="meta">
