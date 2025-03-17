@@ -385,7 +385,7 @@ const SEHeaderFive: React.FC = () => {
                                     <button className="metaportal_fn_buttonLW" onClick={handleClaimRewards} disabled={claimingLoading || totalAccruedRewards === "0"}>
                                         {claimingLoading ? "Claiming..." : "Claim WGSA"}
                                     </button>
-                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/features/aPolWMATIC-gsa-staking' target='blank'>
+                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/defi-staking/apolwmatic-wgsa-staking' target='blank'>
                                         <button className="metaportal_fn_buttonLW">About</button>
                                     </a>
                                 </div>
