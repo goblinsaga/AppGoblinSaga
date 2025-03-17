@@ -291,7 +291,7 @@ const SEHeaderH: React.FC = () => {
                                         {isClaiming ? "Claiming..." : loading ? "Processing..." : "Claim WGSA"}
                                     </button>
 
-                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/features/gsa-xgsa-staking' target='blank'>
+                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/defi-staking/gsa-wgsa-staking' target='blank'>
                                         <button
                                             className="metaportal_fn_buttonLW"
                                         >
