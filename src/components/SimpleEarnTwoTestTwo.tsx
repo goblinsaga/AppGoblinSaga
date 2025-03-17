@@ -383,7 +383,7 @@ const SEHeader2Two: React.FC = () => {
                                         {claimingLoading ? "Claiming..." : "Claim GSA"}
                                     </button>
 
-                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/features/pol-gsa-staking' target='blank'>
+                                    <a style={{ textDecoration: "none" }} href='https://docs.goblinsaga.xyz/defi-staking/pol-gsa-staking' target='blank'>
                                         <button
                                             className="metaportal_fn_buttonLW"
                                         >
