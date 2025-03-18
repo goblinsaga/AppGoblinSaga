@@ -77,12 +77,12 @@ const NewUsers = () => {
                     >
                         <h3 className="fn__maintitle big" data-text="Migration" style={{ margin: 0 }}>Migration</h3>
                         <p style={{ margin: 0, color: "yellow" }}>The Mining Migration Has Been Started</p>
-                        <p style={{ margin: 0 }}>1. Click on Unmine</p>
-                        <p style={{ margin: 0 }}>2. Click on Mine All</p>
-                        <p style={{ margin: 0 }}>3. Migrate your Staked Tokens</p>
+                        <p style={{ margin: 0 }}>1. Migrate Goblin NFTs to V2</p>
+                        <p style={{ margin: 0 }}>2. Migrate Items & S.Items to V2</p>
+                        <p style={{ margin: 0 }}>3. Migrate Your Old Tokens to V2</p>
 
                         <a href="#migration" className="metaportal_fn_button" style={{ marginTop: "20px", paddingBottom: "2rem" }}>
-                            Migrate your NFTs now
+                            Migrate your NFTs Now
                         </a>
                     </div>
                 </div>
