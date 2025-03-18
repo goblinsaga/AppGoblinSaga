@@ -57,7 +57,7 @@ const NewUsersThree = () => {
                                 height: "100%",
                                 backgroundImage: "url('img/gd4.png')",
                                 backgroundSize: "cover",
-                                backgroundPosition: "-50% center",
+                                backgroundPosition: "-40% center",
                                 backgroundRepeat: "no-repeat",
                             }}
                         ></div>
@@ -72,8 +72,6 @@ const NewUsersThree = () => {
                                 flexDirection: "column",
                                 justifyContent: "center",
                                 alignItems: "center",
-                                paddingBottom: "2rem",
-                                paddingTop: "2rem",
                             }}
                         >
                             <h3 className="fn__maintitle big" data-text="Migration" style={{ margin: 0 }}>Migration</h3>
