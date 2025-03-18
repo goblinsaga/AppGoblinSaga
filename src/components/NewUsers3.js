@@ -57,7 +57,7 @@ const NewUsersThree = () => {
                                 height: "100%",
                                 backgroundImage: "url('img/gd4.png')",
                                 backgroundSize: "cover",
-                                backgroundPosition: "left center",
+                                backgroundPosition: "80% center",
                                 backgroundRepeat: "no-repeat",
                             }}
                         ></div>
