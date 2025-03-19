@@ -4,6 +4,7 @@ import SEHeader2Two from "./SimpleEarnTwoTestTwo";
 import SEHeaderThree from "./SimpleEarnThreeTest";
 import SEHeaderFour from "./SimpleEarnFourTest";
 import SEHeaderFive from "./SimpleEarnFiveTest";
+import SEHeaderSix from "./SimpleEarnSixTest";
 
 const StakeGSA = () => {
     // Estados para controlar la visibilidad de cada componente
@@ -12,11 +13,12 @@ const StakeGSA = () => {
     const [showSEHeaderThree, setShowSEHeaderThree] = useState(false);
     const [showSEHeaderFour, setShowSEHeaderFour] = useState(false);
     const [showSEHeaderFive, setShowSEHeaderFive] = useState(false);
+    const [showSEHeaderSix, setShowSEHeaderSix] = useState(false);
 
     return (
         <section id="news" style={{ marginTop: "-200px" }}>
-            <div id="defi-stake" className="container">
-                <h3 className="fn__maintitle big" data-text="DeFi Stake" data-align="center">
+            <div id="stake" className="container">
+                <h3 className="fn__maintitle big" data-text="DeFi Stake" data-align="center" style={{ marginBottom: "50px" }}>
                     DeFi Stake
                 </h3>
                 <div className="tasks-list">
@@ -113,9 +115,14 @@ const StakeGSA = () => {
                         </div>
                     )}
 
+                    <h3 id="restake" className="fn__maintitle big" data-text="DeFi Restake" data-align="center" style={{ marginBottom: "40px", marginTop: "30px" }}>
+                        DeFi Restake
+                    </h3>
+
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
+                        onClick={() => setShowSEHeaderSix(!showSEHeaderSix)}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -130,12 +137,17 @@ const StakeGSA = () => {
                             <img src="/img/MATICX-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">MATICX/WGSA</p>
+                            <p className="task-title">MATICX/WGSA🔥</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">Coming Soon</p>
+                            <p className="task-reward">APR: 71.45%</p>
                         </div>
                     </div>
+                    {showSEHeaderSix && (
+                        <div>
+                            <SEHeaderSix />
+                        </div>
+                    )}
 
                     {/* Tarea 2 */}
                     <div
