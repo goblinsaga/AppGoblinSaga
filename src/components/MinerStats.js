@@ -115,37 +115,16 @@ const MinerStats = () => {
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#defi-stake">
+                    <Link href="/defi#stake">
                       <a>
-                        <span>POL/GSA Stake</span>
+                        <span>Token Stake</span>
                       </a>
                     </Link>
                   </div>
                   <div className="read_more">
-                    <Link href="/defi#defi-stake">
+                    <Link href="/defi#restake">
                       <a>
-                        <span>GSA/WGSA Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#defi-stake">
-                      <a>
-                        <span>USDC/WGSA Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#defi-stake">
-                      <a>
-                        <span>ankrPOL/WGSA Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#defi-stake">
-                      <a>
-                        <span>aPolWMATIC/WGSA Stake</span>
+                        <span>Token Restake</span>
                       </a>
                     </Link>
                   </div>
