@@ -253,7 +253,7 @@ const SEHeaderSix: React.FC = () => {
     return (
         <section>
             <div style={{ height: "auto", marginBottom: "20px" }} className="blog__item">
-                <p style={{ fontSize: "13px", textAlign: "justify" }}>MATICX is a liquid staking token on the Polygon network, issued by Stader Labs. It represents staked POL and allows users to earn rewards. By staking POL with Stader, its value increases over time as it accrues staking rewards.</p>
+                <p style={{ fontSize: "13px", textAlign: "justify" }}>MATICX is a liquid staking token on the Polygon network, issued by Stader Labs. It represents staked POL and allows users to earn rewards. By staking POL with Stader, its value increases over time as it accrues staking rewards. <a style={{ color: "green" }} href="https://docs.goblinsaga.xyz/defi-staking/maticx-wgsa-staking#how-to-restake-maticx-on-goblin-saga" target="_blank">Tutorial</a></p>
                 
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                     <a className="metaportal_fn_buttonLW" href='https://www.staderlabs.com/polygon/stake/' target='blank' style={{ textDecoration: "none" }}>
