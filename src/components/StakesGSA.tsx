@@ -116,6 +116,30 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
+                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "translateY(-10px)";
+                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "none";
+                        }}
+                    >
+                        <div className="task-icon">
+                            <img src="/img/MATICX-WGSA.png" alt="Goblin Icon" />
+                        </div>
+                        <div className="task-content">
+                            <p className="task-title">MATICX/WGSA</p>
+                        </div>
+                        <div className="task-action">
+                            <p className="task-reward">Coming Soon</p>
+                        </div>
+                    </div>
+
+                    {/* Tarea 2 */}
+                    <div
+                        className="blog__item"
                         onClick={() => setShowSEHeaderFour(!showSEHeaderFour)}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
