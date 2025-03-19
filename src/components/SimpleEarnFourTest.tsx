@@ -256,7 +256,7 @@ const SEHeaderFour: React.FC = () => {
     return (
         <section>
             <div style={{ height: "auto", marginBottom: "20px" }} className="blog__item">
-                <p style={{ fontSize: "13px", textAlign: "justify" }}>ankrPOL is a token that represents POL in staking on Polygon. When you deposit POL in Ankr, you receive ankrPOL, which continues to generate rewards without locking your funds. This allows you to use it in DeFi while earning yields, offering a flexible and liquid way to stake.</p>
+                <p style={{ fontSize: "13px", textAlign: "justify" }}>ankrPOL is a token that represents POL in staking on Polygon. When you deposit POL in Ankr, you receive ankrPOL, which continues to generate rewards without locking your funds. This allows you to use it in DeFi while earning yields, offering a flexible and liquid way to stake. <a style={{ color: "green" }} href="https://docs.goblinsaga.xyz/defi-staking/ankrpol-wgsa-staking#how-to-restake-ankrpol-on-goblin-saga" target="_blank">Tutorial</a> </p>
                 
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                     <a className="metaportal_fn_buttonLW" href='https://www.ankr.com/staking/stake/pol/polygon/' target='blank' style={{ textDecoration: "none" }}>
