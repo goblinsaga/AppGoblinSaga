@@ -255,17 +255,13 @@ const SEHeaderFive: React.FC = () => {
     return (
         <section>
             <div style={{ height: "auto", marginBottom: "20px" }} className="blog__item">
-                <p style={{ fontSize: "13px", textAlign: "justify" }}>aPolWMATIC is a token that represents POL in the liquid staking at Polygon. When you deposit POL into Aave, you receive aPolWMATIC, which continues to generate rewards without blocking your funds. This allows you to use it in DeFi while earning returns, offering a flexible and liquid form of staking.</p>
-                <p style={{ fontSize: "13px", textAlign: "center" }}>1. Supply POL on Aave Protocol.</p>
-                <p style={{ fontSize: "13px", textAlign: "center" }}>2. Stake it on Goblin Saga App to double your rewards.</p>
+                <p style={{ fontSize: "13px", textAlign: "justify" }}>aPolWMATIC is a token that represents POL in the liquid staking at Polygon. When you deposit POL into Aave, you receive aPolWMATIC, which continues to generate rewards without blocking your funds. This allows you to use it in DeFi while earning returns, offering a flexible and liquid form of staking. <a style={{ color: "green" }} href="https://docs.goblinsaga.xyz/defi-staking/apolwmatic-wgsa-staking#how-to-restake-apolwmatic-on-goblin-saga" target="_blank">Tutorial</a></p>
                 
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                     <a className="metaportal_fn_buttonLW" href='https://app.aave.com/?marketName=proto_polygon_v3' target='blank' style={{ textDecoration: "none" }}>
                         <p style={{ fontSize: "15px", color: "white" }}>Get aPolWMATIC</p>
                     </a>
                 </div>
-
-                <p style={{ fontSize: "15px", textAlign: "center", marginTop: "20px" }} >The interest generated will be emitted to your wallet by Aave once you unstake your aPolWMATIC. <a style={{ color: "yellow" }} href='https://polygonscan.com/tx/0x5391e1add1f4b39731d5827a61e15dd88116a708bf8ce13bcc231e623523f673' target='_blank'>Example</a></p>
             </div>
             <div id="aPolWMATIC-Staking">
                 <div className="fn_cs_news">
