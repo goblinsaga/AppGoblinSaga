@@ -135,7 +135,7 @@ export default function NFTCard4({ nft }: Props) {
     };
 
     const updateQuantity = (type: string) => {
-        if (type === "+" && quantity < 5) {
+        if (type === "+" && quantity < 15) {
             setQuantity(quantity + 1);
         } else if (type === "-" && quantity > 1) {
             setQuantity(quantity - 1);
