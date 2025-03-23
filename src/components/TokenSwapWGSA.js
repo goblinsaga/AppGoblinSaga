@@ -3,6 +3,7 @@ import { ethers } from "ethers";
 import ErrorMessagePopup from './popups/ErrorMessagePopup';
 import SuccessMessagePopup from './popups/SuccessMessagePopup';
 import PolygonGasPrice from "./PolygonGasPrice";
+import AddTokenWallet from "./AddToWallet";
 
 const GSA_TOKEN_OLD_ADDRESS = "0x6f5c47c85E55ef4E0d17c4d221C79d0e7a0A4650"; // Dirección del token antiguo
 const GSA_TOKEN_NEW_ADDRESS = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468"; // Dirección del token nuevo
@@ -238,8 +239,13 @@ const TokenSwapWGSA = () => {
                     <div className="news_part">
                         <div className="left_items">
                             <div className="blog__item">
+                                <div className="meta">
+                                    <p>Token Swap 1:1</p>
+                                </div>
+                                <div className="title">
+                                    <h3>WGSA/GSA</h3>
+                                </div>
                                 <div className="image">
-                                    <p style={{ textAlign: "center" }}>WGSA/GSA Token Swap 1:1</p>
                                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                         <img style={{ width: "50%" }} src="/img/token-swap2.png" alt="Swap" />
                                     </div>
@@ -335,7 +341,7 @@ const TokenSwapWGSA = () => {
                                     </span>
                                 </div>
                                 <div className="meta">
-                                    <p>New $GSA Balance</p>
+                                    <p>$GSA Balance</p>
                                 </div>
                                 <div className="title">
                                     <h3>
@@ -356,6 +362,11 @@ const TokenSwapWGSA = () => {
                                     <h3>
                                         {loadingOldToken ? "Loading..." : oldTokenBalance}
                                     </h3>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    <AddTokenWallet />
                                 </div>
                             </div>
                         </div>
