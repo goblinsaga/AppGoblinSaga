@@ -87,7 +87,7 @@ const Header = ({ walletToggle, navigationToggle }) => {
               </li>
               <li>
                 <Link href="https://goblinsaga.xyz/mint">
-                  <a className="creative_link">Mint</a>
+                  <a className="creative_link">NFT Mint</a>
                 </Link>
               </li>
               <li>
