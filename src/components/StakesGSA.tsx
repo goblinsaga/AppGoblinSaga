@@ -1,19 +1,27 @@
-import React, { useState } from "react"; // Importa useState
+import React, { useState } from "react";
 import SEHeaderH from "./SimpleEarnOneTestThree";
 import SEHeader2Two from "./SimpleEarnTwoTestTwo";
 import SEHeaderThree from "./SimpleEarnThreeTest";
 import SEHeaderFour from "./SimpleEarnFourTest";
 import SEHeaderFive from "./SimpleEarnFiveTest";
 import SEHeaderSix from "./SimpleEarnSixTest";
+import SEv1Rewards from "./SEv1Rewards";
+import SEv2Rewards from "./SEv2Rewards";
+import SEv3Rewards from "./SEv3Rewards";
+import SEv6Rewards from "./SEv6Rewards";
+import SEv4Rewards from "./SEv4Rewards";
+import SEv5Rewards from "./SEv5Rewards";
 
 const StakeGSA = () => {
-    // Estados para controlar la visibilidad de cada componente
-    const [showSEHeaderH, setShowSEHeaderH] = useState(false);
-    const [showSEHeader2Two, setShowSEHeader2Two] = useState(false);
-    const [showSEHeaderThree, setShowSEHeaderThree] = useState(false);
-    const [showSEHeaderFour, setShowSEHeaderFour] = useState(false);
-    const [showSEHeaderFive, setShowSEHeaderFive] = useState(false);
-    const [showSEHeaderSix, setShowSEHeaderSix] = useState(false);
+    // Estado para controlar qué componente está visible
+    const [visibleComponent, setVisibleComponent] = useState(null);
+
+    // Función para manejar el clic en un componente
+    const handleComponentClick = (componentName) => {
+        // Si el componente ya está visible, lo ocultamos
+        // Si no, mostramos el nuevo componente y ocultamos cualquier otro
+        setVisibleComponent(visibleComponent === componentName ? null : componentName);
+    };
 
     return (
         <section id="news" style={{ marginTop: "-200px" }}>
@@ -25,7 +33,7 @@ const StakeGSA = () => {
                     {/* Tarea 0 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeaderH(!showSEHeaderH)}
+                        onClick={() => handleComponentClick('SEHeaderH')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -43,11 +51,14 @@ const StakeGSA = () => {
                             <p className="task-title">GSA/WGSA</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 9.13%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 9.13%</p>
+                                <div className="additional-text"><SEv1Rewards /></div>
+                            </div>
                         </div>
                     </div>
                     {/* Muestra SEHeaderH condicionalmente */}
-                    {showSEHeaderH && (
+                    {visibleComponent === 'SEHeaderH' && (
                         <div>
                             <SEHeaderH />
                         </div>
@@ -56,7 +67,7 @@ const StakeGSA = () => {
                     {/* Tarea 1 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeader2Two(!showSEHeader2Two)}
+                        onClick={() => handleComponentClick('SEHeader2Two')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -74,11 +85,14 @@ const StakeGSA = () => {
                             <p className="task-title">POL/GSA</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 27.37%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 27.37%</p>
+                                <div className="additional-text"><SEv2Rewards /></div>
+                            </div>
                         </div>
                     </div>
                     {/* Muestra SEHeader2Two condicionalmente */}
-                    {showSEHeader2Two && (
+                    {visibleComponent === 'SEHeader2Two' && (
                         <div>
                             <SEHeader2Two />
                         </div>
@@ -87,7 +101,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeaderThree(!showSEHeaderThree)}
+                        onClick={() => handleComponentClick('SEHeaderThree')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -105,11 +119,14 @@ const StakeGSA = () => {
                             <p className="task-title">USDC/WGSA</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 36.4%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 36.4%</p>
+                                <div className="additional-text"><SEv3Rewards /></div>
+                            </div>
                         </div>
                     </div>
                     {/* Muestra SEHeaderThree condicionalmente */}
-                    {showSEHeaderThree && (
+                    {visibleComponent === 'SEHeaderThree' && (
                         <div>
                             <SEHeaderThree />
                         </div>
@@ -122,7 +139,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeaderSix(!showSEHeaderSix)}
+                        onClick={() => handleComponentClick('SEHeaderSix')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -140,10 +157,13 @@ const StakeGSA = () => {
                             <p className="task-title">MATICX/WGSA🔥</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 71.45%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 71.45%</p>
+                                <div className="additional-text"><SEv6Rewards /></div>
+                            </div>
                         </div>
                     </div>
-                    {showSEHeaderSix && (
+                    {visibleComponent === 'SEHeaderSix' && (
                         <div>
                             <SEHeaderSix />
                         </div>
@@ -152,7 +172,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeaderFour(!showSEHeaderFour)}
+                        onClick={() => handleComponentClick('SEHeaderFour')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -170,10 +190,13 @@ const StakeGSA = () => {
                             <p className="task-title">ankrPOL/WGSA🔥</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 72.98%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 72.98%</p>
+                                <div className="additional-text"><SEv4Rewards /></div>
+                            </div>
                         </div>
                     </div>
-                    {showSEHeaderFour && (
+                    {visibleComponent === 'SEHeaderFour' && (
                         <div>
                             <SEHeaderFour />
                         </div>
@@ -182,7 +205,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
-                        onClick={() => setShowSEHeaderFive(!showSEHeaderFive)}
+                        onClick={() => handleComponentClick('SEHeaderFive')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -200,10 +223,13 @@ const StakeGSA = () => {
                             <p className="task-title">aPolWMATIC/WGSA🔥</p>
                         </div>
                         <div className="task-action">
-                            <p className="task-reward">APR: 74.08%</p>
+                            <div className="task-reward-container">
+                                <p className="task-reward">APR: 74.08%</p>
+                                <div className="additional-text"><SEv5Rewards /></div>
+                            </div>
                         </div>
                     </div>
-                    {showSEHeaderFive && (
+                    {visibleComponent === 'SEHeaderFive' && (
                         <div>
                             <SEHeaderFive />
                         </div>
@@ -225,12 +251,12 @@ const StakeGSA = () => {
                     justify-content: space-between;
                     background: transparent;
                     padding: 15px 20px;
-                    height: auto; /* Cambiado a auto para ajustarse al contenido */
+                    height: auto;
                 }
 
                 .task-icon img {
-                    width: 50px; /* Reducido para móviles */
-                    height: 50px; /* Reducido para móviles */
+                    width: 50px;
+                    height: 50px;
                     border-radius: 10px;
                 }
 
@@ -241,31 +267,43 @@ const StakeGSA = () => {
                 }
 
                 .task-title {
-                    font-size: 14px; /* Reducido para móviles */
+                    font-size: 14px;
                     margin-bottom: 5px;
-                }
-
-                .task-reward {
-                    font-size: 12px; /* Reducido para móviles */
                 }
 
                 .task-action {
                     display: flex;
-                    align-items: center;
-                    margin-top: 15px; /* Eliminado margen superior */
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+
+                .task-reward-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-end;
+                }
+
+                .task-reward {
+                    font-size: 12px;
+                    margin: 15px 0 0 0;
+                }
+
+                .additional-text {
+                    font-size: 9px;
+                    margin: 5px 0 0 0;
                 }
 
                 @media screen and (max-width: 768px) {
                     .blog__item {
-                        flex-direction: row; /* Mantener dirección horizontal */
+                        flex-direction: row;
                         align-items: center;
                         padding: 10px;
                         gap: 10px;
-                        height: auto; /* Ajustar al contenido */
+                        height: auto;
                     }
 
                     .task-icon {
-                        margin-top: 0; /* Eliminado margen superior */
+                        margin-top: 0;
                     }
 
                     .task-action {
@@ -276,7 +314,7 @@ const StakeGSA = () => {
                     }
 
                     .task-action p {
-                        white-space: nowrap; /* Evitar salto de línea */
+                        white-space: nowrap;
                     }
                 }
             `}</style>
