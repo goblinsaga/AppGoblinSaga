@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
         supportedWallets={[
           metamaskWallet(),
           coinbaseWallet(),
-          trustWallet(),
+          walletConnect(),
         ]}
         clientId={process.env.NEXT_PUBLIC_CLIENT_ID}
       >
