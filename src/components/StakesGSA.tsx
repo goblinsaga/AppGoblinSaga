@@ -11,15 +11,28 @@ import SEv3Rewards from "./SEv3Rewards";
 import SEv6Rewards from "./SEv6Rewards";
 import SEv4Rewards from "./SEv4Rewards";
 import SEv5Rewards from "./SEv5Rewards";
+import useStakedGSA from "./TotalStakeds/GSAStaked";
+import useStakedPOL from "./TotalStakeds/POLStaked";
+import useStakedUSDC from "./TotalStakeds/USDCStaked";
+import useStakedMATICX from "./TotalStakeds/MATICXStaked";
+import userStakedANKRPOL from "./TotalStakeds/ANKRPOLStaked";
+import useStakedAPOL from "./TotalStakeds/APOLStaked";
+import dynamic from "next/dynamic";
+
+const Counter = dynamic(() => import("./Counter"), {
+  ssr: false,
+});
 
 const StakeGSA = () => {
-    // Estado para controlar qué componente está visible
+    const totalGSAStaked = useStakedGSA();
+    const totalPOLStaked = useStakedPOL();
+    const totalUSDCStaked = useStakedUSDC();
+    const totalMATICXStaked = useStakedMATICX();
+    const totalANKRPOLStaked = userStakedANKRPOL();
+    const totalAPOLStaked = useStakedAPOL();
     const [visibleComponent, setVisibleComponent] = useState(null);
 
-    // Función para manejar el clic en un componente
     const handleComponentClick = (componentName) => {
-        // Si el componente ya está visible, lo ocultamos
-        // Si no, mostramos el nuevo componente y ocultamos cualquier otro
         setVisibleComponent(visibleComponent === componentName ? null : componentName);
     };
 
@@ -49,6 +62,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">GSA/WGSA</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={totalGSAStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {totalGSAStaked >= 1_000_000 ? "M" : totalGSAStaked >= 1_000 ? "M" : ""} $GSA
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
@@ -83,6 +103,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">POL/GSA</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={ totalPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {totalPOLStaked >= 1_000_000 ? "K" : totalPOLStaked >= 1_000 ? "K" : ""} $POL
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
@@ -117,6 +144,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">USDC/WGSA</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={ totalUSDCStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {totalUSDCStaked >= 1_000_000 ? "K" : totalUSDCStaked >= 1_000 ? "K" : ""} $USDC
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
@@ -155,6 +189,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">MATICX/WGSA🔥</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={ totalMATICXStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {totalMATICXStaked >= 1_000_000 ? "K" : totalMATICXStaked >= 1_000 ? "K" : ""} $MATICX
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
@@ -188,6 +229,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">ankrPOL/WGSA🔥</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={ totalANKRPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {totalANKRPOLStaked >= 1_000_000 ? "K" : totalANKRPOLStaked >= 1_000 ? "K" : ""} $ankrPOL
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
@@ -221,6 +269,13 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-content">
                             <p className="task-title">aPolWMATIC/WGSA🔥</p>
+                            <div className="additional-text">
+                                <span className="label">Total Staked: </span>
+                                <Counter end={ totalAPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {Number(totalAPOLStaked) >= 1_000_000 ? "K" : Number(totalAPOLStaked) >= 1_000 ? "K" : ""} $aPOL
+                                </span>
+                            </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
