@@ -181,7 +181,7 @@ const StakeGSA = () => {
                         }}
                     >
                         <div className="task-icon">
-                            <img src="/img/USDC-WGSA.png" alt="Goblin Icon" />
+                            <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
                             <p className="task-title">USDT/WGSA</p>
