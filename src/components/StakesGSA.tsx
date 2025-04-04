@@ -317,7 +317,7 @@ const StakeGSA = () => {
                                 <span className="label">Total Staked: </span>
                                 <Counter end={totalUSDTStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
                                 <span className="suffix">
-                                    {Number(totalUSDTStaked) >= 1_000_000 ? "K" : Number(totalUSDTStaked) >= 1_000 ? "K" : ""} $USDC
+                                    {Number(totalUSDTStaked) >= 1_000_000 ? "K" : Number(totalUSDTStaked) >= 1_000 ? "K" : ""} $aUSDT
                                 </span>
                             </div>
                         </div>
