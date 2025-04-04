@@ -333,7 +333,7 @@ const SEHeaderSeven: React.FC = () => {
     return (
         <section>
             <div style={{ height: "auto", marginBottom: "20px" }} className="blog__item">
-                <p style={{ fontSize: "13px", textAlign: "justify" }}>aPolUSDT is a token that represents USDT in the liquid staking at Polygon. When you deposit USDT into Aave, you receive aPolUSDT, which continues to generate rewards without blocking your funds. This allows you to use it in DeFi while earning returns, offering a flexible and liquid form of staking. <a style={{ color: "green" }} href="https://docs.goblinsaga.xyz/defi-staking/apolwmatic-wgsa-staking#how-to-restake-apolwmatic-on-goblin-saga" target="_blank">Tutorial</a></p>
+                <p style={{ fontSize: "13px", textAlign: "justify" }}>aPolUSDT is a token that represents USDT in the liquid staking at Polygon. When you deposit USDT into Aave, you receive aPolUSDT, which continues to generate rewards without blocking your funds. This allows you to use it in DeFi while earning returns, offering a flexible and liquid form of staking. <a style={{ color: "green" }} href="https://docs.goblinsaga.xyz/defi-staking/apolusdt-wgsa-staking#how-to-restake-apolusdt-on-goblin-saga" target="_blank">Tutorial</a></p>
 
                 <div style={{ display: "flex", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
                     <a className="metaportal_fn_buttonLW" href='https://app.aave.com/?marketName=proto_polygon_v3' target='blank' style={{ textDecoration: "none" }}>
