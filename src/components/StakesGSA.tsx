@@ -166,38 +166,6 @@ const StakeGSA = () => {
                         </div>
                     )}
 
-                    {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">USDT/WGSA</p>
-                            <div className="additional-text">
-                                <span className="label">Coming Soon</span>
-                            </div>
-                        </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">Coming Soon</p>
-                                <div className="additional-text"></div>
-                            </div>
-                        </div>
-                    </div>
-
-
                     <h3 id="restake" className="fn__maintitle big" data-text="DeFi Restake" data-align="center" style={{ marginBottom: "40px", marginTop: "30px" }}>
                         DeFi Restake
                     </h3>
@@ -321,6 +289,37 @@ const StakeGSA = () => {
                             <SEHeaderFive />
                         </div>
                     )}
+
+                    {/* Tarea 2 */}
+                    <div
+                        className="blog__item"
+
+                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.transform = "translateY(-10px)";
+                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.transform = "translateY(0)";
+                            e.currentTarget.style.boxShadow = "none";
+                        }}
+                    >
+                        <div className="task-icon">
+                            <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
+                        </div>
+                        <div className="task-content">
+                            <p className="task-title">aPolUSDT/WGSA</p>
+                            <div className="additional-text">
+                                <span className="label">Coming Soon</span>
+                            </div>
+                        </div>
+                        <div className="task-action">
+                            <div className="task-reward-container">
+                                <p className="task-reward">Coming Soon</p>
+                                <div className="additional-text"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
