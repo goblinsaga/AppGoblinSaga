@@ -320,7 +320,7 @@ const SEHeaderFour: React.FC = () => {
                                         <WGsaTokenBalanceTwo />
                                     </div>
                                     <div className="blog__item" style={{ marginTop: "30px", marginBottom: "30px" }}>
-                                        <p style={{ color: "yellow" }}>APR: 72.98%</p>
+                                        <p style={{ color: "yellow" }}>APR: 74.08%</p>
                                         <p>1 ankrPOL = 4000 $WGSA/48H</p>
                                     </div>
                                 </div>
