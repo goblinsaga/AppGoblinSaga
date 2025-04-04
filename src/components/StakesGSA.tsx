@@ -61,7 +61,7 @@ const StakeGSA = () => {
                             <img src="/img/GSA-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">GSA/WGSA</p>
+                            <p className="task-title">GSA/WGSA🔥</p>
                             <div className="additional-text">
                                 <span className="label">Total Staked: </span>
                                 <Counter end={totalGSAStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
@@ -268,7 +268,7 @@ const StakeGSA = () => {
                             <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">aPolWMATIC/WGSA🔥</p>
+                            <p className="task-title">aPolWMATIC/WGSA🔥🔥</p>
                             <div className="additional-text">
                                 <span className="label">Total Staked: </span>
                                 <Counter end={totalAPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
@@ -308,7 +308,7 @@ const StakeGSA = () => {
                             <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
                         </div>
                         <div className="task-content">
-                            <p className="task-title">aPolUSDT/WGSA</p>
+                            <p className="task-title">aPolUSDT/WGSA🔥🔥🔥</p>
                             <div className="additional-text">
                                 <span className="label">Coming Soon</span>
                             </div>
