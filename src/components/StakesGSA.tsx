@@ -5,18 +5,21 @@ import SEHeaderThree from "./SimpleEarnThreeTest";
 import SEHeaderFour from "./SimpleEarnFourTest";
 import SEHeaderFive from "./SimpleEarnFiveTest";
 import SEHeaderSix from "./SimpleEarnSixTest";
+import SEHeaderSeven from "./SimpleEarnSeven";
 import SEv1Rewards from "./SEv1Rewards";
 import SEv2Rewards from "./SEv2Rewards";
 import SEv3Rewards from "./SEv3Rewards";
 import SEv6Rewards from "./SEv6Rewards";
 import SEv4Rewards from "./SEv4Rewards";
 import SEv5Rewards from "./SEv5Rewards";
+import SEv7Rewards from "./SEv7Rewards";
 import useStakedGSA from "./TotalStakeds/GSAStaked";
 import useStakedPOL from "./TotalStakeds/POLStaked";
 import useStakedUSDC from "./TotalStakeds/USDCStaked";
 import useStakedMATICX from "./TotalStakeds/MATICXStaked";
 import userStakedANKRPOL from "./TotalStakeds/ANKRPOLStaked";
 import useStakedAPOL from "./TotalStakeds/APOLStaked";
+import useStakedUSDT from "./TotalStakeds/AUSDTStaked";
 import dynamic from "next/dynamic";
 
 const Counter = dynamic(() => import("./Counter"), {
@@ -30,6 +33,7 @@ const StakeGSA = () => {
     const totalMATICXStaked = useStakedMATICX();
     const totalANKRPOLStaked = userStakedANKRPOL();
     const totalAPOLStaked = useStakedAPOL();
+    const totalUSDTStaked = useStakedUSDT();
     const [visibleComponent, setVisibleComponent] = useState(null);
 
     const handleComponentClick = (componentName) => {
@@ -293,7 +297,7 @@ const StakeGSA = () => {
                     {/* Tarea 2 */}
                     <div
                         className="blog__item"
-
+                        onClick={() => handleComponentClick('SEHeaderSeven')}
                         style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
                         onMouseEnter={(e) => {
                             e.currentTarget.style.transform = "translateY(-10px)";
@@ -310,16 +314,25 @@ const StakeGSA = () => {
                         <div className="task-content">
                             <p className="task-title">aPolUSDT/WGSA🔥🔥🔥</p>
                             <div className="additional-text">
-                                <span className="label">Coming Soon</span>
+                                <span className="label">Total Staked: </span>
+                                <Counter end={totalUSDTStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
+                                <span className="suffix">
+                                    {Number(totalUSDTStaked) >= 1_000_000 ? "K" : Number(totalUSDTStaked) >= 1_000 ? "K" : ""} $USDC
+                                </span>
                             </div>
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
-                                <p className="task-reward">Coming Soon</p>
-                                <div className="additional-text"></div>
+                                <p className="task-reward">APR: 91.00%</p>
+                                <div className="additional-text"><SEv7Rewards /></div>
                             </div>
                         </div>
                     </div>
+                    {visibleComponent === 'SEHeaderSeven' && (
+                        <div>
+                            <SEHeaderSeven />
+                        </div>
+                    )}
                 </div>
             </div>
 
