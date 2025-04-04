@@ -239,7 +239,7 @@ const StakeGSA = () => {
                         </div>
                         <div className="task-action">
                             <div className="task-reward-container">
-                                <p className="task-reward">APR: 72.98%</p>
+                                <p className="task-reward">APR: 74.08%</p>
                                 <div className="additional-text"><SEv4Rewards /></div>
                             </div>
                         </div>
