@@ -1,22 +1,30 @@
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #4b0074 transparent;
+}
+
+body {
+  background-color: rgb(27,18,29);
 }
 
 button {
-  cursor: pointer; /* Cambia el cursor a puntero */
+  cursor: pointer;
 }
 
 button, a, .custom-button {
-  cursor: pointer; /* Cambia el cursor a puntero */
+  cursor: pointer;
 }
 
 .metaportal_fn_leftnav .nav_holder .active ~ .sub-menu {
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
 }
+
 .metaportal_fn_leftnav .nav_holder .active ~ .sub-menu::-webkit-scrollbar {
   width: 0px;
 }
+
 #ripple {
   align-items: center;
   background-size: cover;
@@ -24,39 +32,35 @@ button, a, .custom-button {
   background-position: center center;
 }
 
-/* Custom scrollbar styles */
 ::-webkit-scrollbar {
-  width: 12px; /* Ancho de la scrollbar */
+  width: 8px;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
-  background: #b100b4; /* Fondo de la scrollbar */
+  background: transparent;
+  margin: 2px 0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #340035; /* Color del pulgar de la scrollbar */
-  border-radius: 10px; /* Radio de borde del pulgar */
-  border: 2px solid transparent; /* Borde transparente para mantener el tamaño del pulgar */
+  background-color: #4b0074;
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #540054; /* Color del pulgar al pasar el mouse (puedes ajustarlo si deseas) */
+  background-color: #4b0074;
 }
 
 input[type=number] {
-  -webkit-appearance: textfield; /* For Chrome, Safari, and Edge */
-  -moz-appearance: textfield;    /* For Firefox */
-  appearance: textfield;         /* Standard property */
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
-  -webkit-appearance: none; /* Remove spin buttons in WebKit browsers */
+  -webkit-appearance: none;
   margin: 0;
-}
-
-/* Para Firefox */
-html {
-  scrollbar-width: thin; /* Grosor de la scrollbar */
-  scrollbar-color: #340035 rgb(27,18,29); /* Color del pulgar y fondo de la scrollbar */
 }
