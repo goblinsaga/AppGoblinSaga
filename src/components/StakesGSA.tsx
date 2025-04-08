@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useLayoutEffect, useCallback } from "react";
 import SEHeaderH from "./SimpleEarnOneTestThree";
 import SEHeader2Two from "./SimpleEarnTwoTestTwo";
 import SEHeaderThree from "./SimpleEarnThreeTest";
@@ -35,309 +35,378 @@ const StakeGSA = () => {
     const totalAPOLStaked = useStakedAPOL();
     const totalUSDTStaked = useStakedUSDT();
     const [visibleComponent, setVisibleComponent] = useState(null);
+    const sectionRefs = useRef([]);
 
     const handleComponentClick = (componentName) => {
         setVisibleComponent(visibleComponent === componentName ? null : componentName);
     };
 
+    const addSectionRef = useCallback((el) => {
+        if (el && !sectionRefs.current.includes(el)) {
+            sectionRefs.current.push(el);
+        }
+    }, []);
+
+    useLayoutEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-visible');
+                    }
+                });
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            }
+        );
+
+        const currentRefs = sectionRefs.current;
+        currentRefs.forEach((el) => observer.observe(el));
+
+        return () => {
+            currentRefs.forEach((el) => observer.unobserve(el));
+        };
+    }, []);
+
     return (
         <section id="news" style={{ marginTop: "-200px" }}>
             <div id="stake" className="container">
-                <h3 className="fn__maintitle big" data-text="DeFi Stake" data-align="center" style={{ marginBottom: "50px" }}>
-                    DeFi Stake
-                </h3>
+                <div>
+                    <h3 className="fn__maintitle big" data-text="DeFi Stake" data-align="center" style={{ marginBottom: "50px" }}>
+                        DeFi Stake
+                    </h3>
+                </div>
+
                 <div className="tasks-list">
                     {/* Tarea 0 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderH')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/GSA-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">GSA/WGSA🔥</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalGSAStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {totalGSAStaked >= 1_000_000 ? "M" : totalGSAStaked >= 1_000 ? "M" : ""} $GSA
-                                </span>
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderH')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/GSA-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">GSA/WGSA🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalGSAStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {totalGSAStaked >= 1_000_000 ? "M" : totalGSAStaked >= 1_000 ? "M" : ""} $GSA
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 9.13%</p>
+                                    <div className="additional-text"><SEv1Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 9.13%</p>
-                                <div className="additional-text"><SEv1Rewards /></div>
+                        {visibleComponent === 'SEHeaderH' && (
+                            <div>
+                                <SEHeaderH />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {/* Muestra SEHeaderH condicionalmente */}
-                    {visibleComponent === 'SEHeaderH' && (
-                        <div>
-                            <SEHeaderH />
-                        </div>
-                    )}
 
                     {/* Tarea 1 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeader2Two')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/POL-GSA2.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">POL/GSA</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {totalPOLStaked >= 1_000_000 ? "K" : totalPOLStaked >= 1_000 ? "K" : ""} $POL
-                                </span>
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeader2Two')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/POL-GSA2.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">POL/GSA</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalPOLStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {totalPOLStaked >= 1_000_000 ? "K" : totalPOLStaked >= 1_000 ? "K" : ""} $POL
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 27.37%</p>
+                                    <div className="additional-text"><SEv2Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 27.37%</p>
-                                <div className="additional-text"><SEv2Rewards /></div>
+                        {visibleComponent === 'SEHeader2Two' && (
+                            <div>
+                                <SEHeader2Two />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {/* Muestra SEHeader2Two condicionalmente */}
-                    {visibleComponent === 'SEHeader2Two' && (
-                        <div>
-                            <SEHeader2Two />
-                        </div>
-                    )}
 
                     {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderThree')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/USDC-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">USDC/WGSA</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalUSDCStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {totalUSDCStaked >= 1_000_000 ? "K" : totalUSDCStaked >= 1_000 ? "K" : ""} $USDC
-                                </span>
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderThree')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/USDC-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">USDC/WGSA</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalUSDCStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {totalUSDCStaked >= 1_000_000 ? "K" : totalUSDCStaked >= 1_000 ? "K" : ""} $USDC
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 36.4%</p>
+                                    <div className="additional-text"><SEv3Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 36.4%</p>
-                                <div className="additional-text"><SEv3Rewards /></div>
+                        {visibleComponent === 'SEHeaderThree' && (
+                            <div>
+                                <SEHeaderThree />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {/* Muestra SEHeaderThree condicionalmente */}
-                    {visibleComponent === 'SEHeaderThree' && (
-                        <div>
-                            <SEHeaderThree />
-                        </div>
-                    )}
 
-                    <h3 id="restake" className="fn__maintitle big" data-text="DeFi Restake" data-align="center" style={{ marginBottom: "40px", marginTop: "30px" }}>
-                        DeFi Restake
-                    </h3>
-
-                    {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderSix')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/MATICX-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">MATICX/WGSA🔥</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalMATICXStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {totalMATICXStaked >= 1_000_000 ? "K" : totalMATICXStaked >= 1_000 ? "K" : ""} $MATICX
-                                </span>
-                            </div>
-                        </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 71.45%</p>
-                                <div className="additional-text"><SEv6Rewards /></div>
-                            </div>
-                        </div>
+                    <div>
+                        <h3 id="restake" className="fn__maintitle big" data-text="DeFi Restake" data-align="center" style={{ marginBottom: "40px", marginTop: "30px" }}>
+                            DeFi Restake
+                        </h3>
                     </div>
-                    {visibleComponent === 'SEHeaderSix' && (
-                        <div>
-                            <SEHeaderSix />
-                        </div>
-                    )}
 
-                    {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderFour')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/ankrPOL-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">ankrPOL/WGSA🔥</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalANKRPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {totalANKRPOLStaked >= 1_000_000 ? "K" : totalANKRPOLStaked >= 1_000 ? "K" : ""} $ankrPOL
-                                </span>
+                    {/* Tarea 3 */}
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderSix')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/MATICX-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">MATICX/WGSA🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalMATICXStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {totalMATICXStaked >= 1_000_000 ? "K" : totalMATICXStaked >= 1_000 ? "K" : ""} $MATICX
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 71.45%</p>
+                                    <div className="additional-text"><SEv6Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 74.08%</p>
-                                <div className="additional-text"><SEv4Rewards /></div>
+                        {visibleComponent === 'SEHeaderSix' && (
+                            <div>
+                                <SEHeaderSix />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {visibleComponent === 'SEHeaderFour' && (
-                        <div>
-                            <SEHeaderFour />
-                        </div>
-                    )}
 
-                    {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderFive')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">aPolWMATIC/WGSA🔥🔥</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalAPOLStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {Number(totalAPOLStaked) >= 1_000_000 ? "K" : Number(totalAPOLStaked) >= 1_000 ? "K" : ""} $aPOL
-                                </span>
+                    {/* Tarea 4 */}
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderFour')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/ankrPOL-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">ankrPOL/WGSA🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalANKRPOLStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {totalANKRPOLStaked >= 1_000_000 ? "K" : totalANKRPOLStaked >= 1_000 ? "K" : ""} $ankrPOL
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 74.08%</p>
+                                    <div className="additional-text"><SEv4Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 74.08%</p>
-                                <div className="additional-text"><SEv5Rewards /></div>
+                        {visibleComponent === 'SEHeaderFour' && (
+                            <div>
+                                <SEHeaderFour />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {visibleComponent === 'SEHeaderFive' && (
-                        <div>
-                            <SEHeaderFive />
-                        </div>
-                    )}
 
-                    {/* Tarea 2 */}
-                    <div
-                        className="blog__item"
-                        onClick={() => handleComponentClick('SEHeaderSeven')}
-                        style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                        onMouseEnter={(e) => {
-                            e.currentTarget.style.transform = "translateY(-10px)";
-                            e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                        }}
-                        onMouseLeave={(e) => {
-                            e.currentTarget.style.transform = "translateY(0)";
-                            e.currentTarget.style.boxShadow = "none";
-                        }}
-                    >
-                        <div className="task-icon">
-                            <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
-                        </div>
-                        <div className="task-content">
-                            <p className="task-title">aPolUSDT/WGSA🔥🔥🔥</p>
-                            <div className="additional-text">
-                                <span className="label">Total Staked: </span>
-                                <Counter end={totalUSDTStaked || 0} decimals={0} /> {/* Usa el valor formateado sin decimales */}
-                                <span className="suffix">
-                                    {Number(totalUSDTStaked) >= 1_000_000 ? "K" : Number(totalUSDTStaked) >= 1_000 ? "K" : ""} $aUSDT
-                                </span>
+                    {/* Tarea 5 */}
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderFive')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">aPolWMATIC/WGSA🔥🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalAPOLStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {Number(totalAPOLStaked) >= 1_000_000 ? "K" : Number(totalAPOLStaked) >= 1_000 ? "K" : ""} $aPOL
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 74.08%</p>
+                                    <div className="additional-text"><SEv5Rewards /></div>
+                                </div>
                             </div>
                         </div>
-                        <div className="task-action">
-                            <div className="task-reward-container">
-                                <p className="task-reward">APR: 91.00%</p>
-                                <div className="additional-text"><SEv7Rewards /></div>
+                        {visibleComponent === 'SEHeaderFive' && (
+                            <div>
+                                <SEHeaderFive />
                             </div>
-                        </div>
+                        )}
                     </div>
-                    {visibleComponent === 'SEHeaderSeven' && (
-                        <div>
-                            <SEHeaderSeven />
+
+                    {/* Tarea 6 */}
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderSeven')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">aPolUSDT/WGSA🔥🔥🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalUSDTStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {Number(totalUSDTStaked) >= 1_000_000 ? "K" : Number(totalUSDTStaked) >= 1_000 ? "K" : ""} $USDC
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 91.0%</p>
+                                    <div className="additional-text"><SEv7Rewards /></div>
+                                </div>
+                            </div>
                         </div>
-                    )}
+                        {visibleComponent === 'SEHeaderSeven' && (
+                            <div>
+                                <SEHeaderSeven />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 
             {/* Estilos CSS */}
             <style jsx>{`
+                .scroll-section {
+                    opacity: 0;
+                    transform: translateY(40px);
+                    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+                
+                .scroll-section.section-visible {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+
+                /* Add delay for each section */
+                .scroll-section:nth-child(1) { transition-delay: 0.1s; }
+                .scroll-section:nth-child(2) { transition-delay: 0.2s; }
+                .scroll-section:nth-child(3) { transition-delay: 0.3s; }
+                .scroll-section:nth-child(4) { transition-delay: 0.4s; }
+                .scroll-section:nth-child(5) { transition-delay: 0.5s; }
+                .scroll-section:nth-child(6) { transition-delay: 0.6s; }
+                .scroll-section:nth-child(7) { transition-delay: 0.7s; }
+                .scroll-section:nth-child(8) { transition-delay: 0.8s; }
+                .scroll-section:nth-child(9) { transition-delay: 0.9s; }
+                .scroll-section:nth-child(10) { transition-delay: 1.0s; }
+
                 .tasks-list {
                     display: flex;
                     flex-direction: column;
