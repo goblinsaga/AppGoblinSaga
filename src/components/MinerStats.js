@@ -17,7 +17,6 @@ import WarriorCheck from "./Badges/WarriorRank";
 import NFTCardHighRank from "./Badges/HighRank";
 import PolygonGasPrice from "./PolygonGasPrice";
 import NewUsers from "./NewUsers";
-import NewUsersTwo from "./NewUsers2";
 import UnstakeAllBox from "./OptionButtons/UnstakeAllBox";
 import StakeAllBox from "./OptionButtons/StakeALLBox";
 import UnstakeAllMines from "./OptionButtons/UnstakeAllMines";
@@ -48,10 +47,7 @@ const MinerStats = () => {
   };
 
   return (
-    <section id="news">
-      <div style={{ marginBottom: "30px" }}>
-        <NewUsersTwo />
-      </div>
+    <section style={{ marginTop: "-100px", marginBottom: "150px" }} className="section">
       <div id="apps" className="container">
         {/* News Shotcode */}
         <div className="blog__item">
@@ -268,4 +264,5 @@ const MinerStats = () => {
     </section>
   );
 };
+
 export default MinerStats;
