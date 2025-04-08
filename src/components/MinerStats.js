@@ -28,191 +28,192 @@ import TaskCenterApp from "./TaskCenter";
 const MinerStats = () => {
   const [isVerified, setIsVerified] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleVerificationStatus = (isVerified, loading) => {
     setIsVerified(isVerified);
     setLoading(loading);
   };
 
+  useEffect(() => {
+    const checkIfMobile = () => setIsMobile(window.innerWidth < 768);
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  const badgeStyle = {
+    transform: isMobile ? 'scale(0.8)' : 'scale(1)',
+    transition: 'transform 0.3s ease'
+  };
+
   return (
     <section id="news">
       <div style={{ marginBottom: "30px" }}>
-        <NewUsers />
+        <NewUsersTwo />
       </div>
       <div id="apps" className="container">
         {/* News Shotcode */}
-        <div className="fn_cs_news">
-          <div className="news_part">
-            <div className="left_items">
-              <div className="blog__item">
-                <div className="image">
-                  <Link href="https://app.goblinsaga.xyz">
-                    <a>
-                      <img src="/img/LogoGS.webp" alt="" />
-                    </a>
-                  </Link>
-                </div>
-                <div>
-                  <p style={{ textAlign: "center" }}>Badges</p>
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '5px',
-                    paddingBottom: "2rem",
-                    marginTop: "20px",
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}>
-                    <NFTCardHighRank />
-                    <NFTCardOG />
-                    <EmperorCheck onVerificationStatus={handleVerificationStatus} />
-                    <KingCheck onVerificationStatus={handleVerificationStatus} />
-                  </div>
-                  <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
-                    gap: '5px',
-                    paddingBottom: "2rem",
-                    marginTop: "-30px",
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}>
-                    <MonarchCheck onVerificationStatus={handleVerificationStatus} />
-                    <LordCheck onVerificationStatus={handleVerificationStatus} />
-                    <WizardCheck onVerificationStatus={handleVerificationStatus} />
-                    <WarriorCheck onVerificationStatus={handleVerificationStatus} />
-                  </div>
-                </div>
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    margin: '0',
-                    padding: '0',
-                    boxSizing: 'border-box',
-                  }}
-                >
-                  <GoblinsMiningCount />
-                </div>
-                <div style={{ height: "300px" }} className="blog__item">
-                  <div className="meta">
-                    <p>Menu App</p>
-                  </div>
-                  
-                  <div className="read_more">
-                    <Link href="/shop">
-                      <a>
-                        <span>Item Shop</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#token-swap">
-                      <a>
-                        <span>Token Swap</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#stake">
-                      <a>
-                        <span>Token Stake</span>
-                      </a>
-                    </Link>
-                  </div>
-                  <div className="read_more">
-                    <Link href="/defi#restake">
-                      <a>
-                        <span>Token Restake</span>
-                      </a>
-                    </Link>
-                  </div>
-                </div>
+        <div className="blog__item">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <GoblinsMiningCount />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "10px",
+              flexWrap: "wrap", // Para asegurar que los elementos se ajusten bien en pantalla pequeña.
+            }}
+          >
+            <div
+              style={{
+                width: "auto",
+                height: "auto",
+                flex: "1 1 auto", // Permite que los elementos se adapten.
+              }}
+              className="blog__item"
+            >
+              <div className="counter">
+                <span className="cc">
+                  <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
+                </span>
+              </div>
+              <div className="meta">
+                <p>$GSA Incoming</p>
+              </div>
+              <div className="title">
+                <h5><CombinedRewards /></h5>
               </div>
             </div>
-
-            <div className="right_items">
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  gap: "10px",
-                  flexWrap: "wrap", // Para asegurar que los elementos se ajusten bien en pantalla pequeña.
-                }}
-              >
-                <div
-                  style={{
-                    width: "auto",
-                    height: "auto",
-                    flex: "1 1 auto", // Permite que los elementos se adapten.
-                  }}
-                  className="blog__item"
-                >
-                  <div className="counter">
-                    <span className="cc">
-                      <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
-                    </span>
-                  </div>
-                  <div className="meta">
-                    <p>$GSA Incoming</p>
-                  </div>
-                  <div className="title">
-                    <h5><CombinedRewards /></h5>
-                  </div>
-                </div>
-
-                <div
-                  style={{
-                    width: "auto",
-                    height: "auto",
-                    flex: "1 1 auto",
-                  }}
-                  className="blog__item"
-                >
-                  <div className="counter">
-                    <span className="cc">
-                      <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
-                    </span>
-                  </div>
-                  <div className="meta">
-                    <p>$GSA Balance</p>
-                  </div>
-                  <div className="title">
-                    <h5><UserBalance /></h5>
-                  </div>
-                </div>
+            <div
+              style={{
+                width: "auto",
+                height: "auto",
+                flex: "1 1 auto",
+              }}
+              className="blog__item"
+            >
+              <div className="counter">
+                <span className="cc">
+                  <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
+                </span>
               </div>
-              <div style={{ height: "350px" }} className="blog__item">
-                <div className="counter">
-                  <span className="cc">
-                    <img style={{ marginTop: "-3px" }} src="/img/GSAV2.png" alt="" />
-                  </span>
-                </div>
-                <div className="meta">
-                  <p>Claim Options</p>
-                </div>
-                <div style={{ marginTop: "15px" }} className="containerGrid">
-                  <ClaimxGSA />
-                  <BusinessButton />
-                  <BoxButton />
-                </div>
+              <div className="meta">
+                <p>$GSA Balance</p>
+              </div>
+              <div className="title">
+                <h5><UserBalance /></h5>
+              </div>
+            </div>
+            <div>
+              <p style={{ textAlign: "center", paddingTop: "2rem" }}>My Badges</p>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                maxWidth: isMobile ? '100%' : '900px',
+                margin: '0 auto'
+              }}>
+                {[
+                  <NFTCardHighRank />,
+                  <NFTCardOG />,
+                  <EmperorCheck onVerificationStatus={handleVerificationStatus} />,
+                  <KingCheck onVerificationStatus={handleVerificationStatus} />,
+                  <MonarchCheck onVerificationStatus={handleVerificationStatus} />,
+                  <LordCheck onVerificationStatus={handleVerificationStatus} />,
+                  <WizardCheck onVerificationStatus={handleVerificationStatus} />,
+                  <WarriorCheck onVerificationStatus={handleVerificationStatus} />
+                ].map((BadgeComponent, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      ...badgeStyle,
+                      width: isMobile ? '25%' : 'auto',
+                      boxSizing: 'border-box',
+                      padding: isMobile ? '1px' : '5px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      transition: 'transform 0.3s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      const target = e.currentTarget;
+                      target.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.currentTarget;
+                      target.style.transform = 'scale(1)';
+                    }}
+                  >
+                    {BadgeComponent}
+                  </div>
+                ))}
+              </div>
+              <div style={{ paddingTop: "2rem" }} className="containerGrid">
+                <ClaimxGSA />
+                <BusinessButton />
+                <BoxButton />
+              </div>
+              <div style={{ paddingBottom: "1rem" }}>
                 <PolygonGasPrice />
               </div>
-
-              <div id="migration" className="blog__item" style={{ height: "auto" }}>
-                <p style={{ textAlign: "center" }}>Migrate Goblins to V2</p>
-                <p style={{ textAlign: "center", fontSize: "12px" }}>(If you are new user just click on Mine)</p>
-                <div style={{ marginTop: "30px" }} className="right_bot">
-                  <UnstakeAllNFT />
-                </div>
-                <div style={{ marginTop: "30px" }} className="left_bot">
-                  <StakeUnstakeNFTs />
-                </div>
-              </div>
             </div>
+          </div>
+          <div style={{ height: "235px" }} className="blog__item">
+            <div className="meta">
+              <p>Menu App</p>
+            </div>
+            <div className="read_more">
+              <Link href="/shop">
+                <a>
+                  <span>Item Shop</span>
+                </a>
+              </Link>
+            </div>
+            <div className="read_more">
+              <Link href="/defi#token-swap">
+                <a>
+                  <span>Token Swap</span>
+                </a>
+              </Link>
+            </div>
+            <div className="read_more">
+              <Link href="/defi#stake">
+                <a>
+                  <span>Token Stake</span>
+                </a>
+              </Link>
+            </div>
+            <div className="read_more">
+              <Link href="/defi#restake">
+                <a>
+                  <span>Token Restake</span>
+                </a>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginBottom: "30px", marginTop: "30px" }}>
+          <NewUsers />
+        </div>
+
+        <div id="migration" className="blog__item" style={{ height: "auto" }}>
+          <p style={{ textAlign: "center" }}>Migrate Goblins to V2</p>
+          <p style={{ textAlign: "center", fontSize: "12px" }}>(If you are new user just click on Mine)</p>
+          <div style={{ marginTop: "30px" }} className="right_bot">
+            <UnstakeAllNFT />
+          </div>
+          <div style={{ marginTop: "30px" }} className="left_bot">
+            <StakeUnstakeNFTs />
           </div>
         </div>
 
@@ -224,7 +225,8 @@ const MinerStats = () => {
             alignItems: "center",
             gap: "10px",
             paddingBottom: "2rem",
-            flexWrap: "wrap", // Para asegurar que los elementos se ajusten bien en pantalla pequeña.
+            flexWrap: "wrap",
+            marginTop: "30px",
           }}
         >
           <div
@@ -262,9 +264,6 @@ const MinerStats = () => {
         <div>
           <TaskCenterApp />
         </div>
-      </div>
-      <div style={{ marginBottom: "30px", marginTop: "30px" }}>
-        <NewUsersTwo />
       </div>
     </section>
   );
