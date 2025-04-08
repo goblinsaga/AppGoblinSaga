@@ -115,12 +115,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderH' && (
-                            <div>
-                                <SEHeaderH />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderH' && (
+                        <div>
+                            <SEHeaderH />
+                        </div>
+                    )}
+
 
                     {/* Tarea 1 */}
                     <div ref={addSectionRef} className="scroll-section">
@@ -157,12 +158,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeader2Two' && (
-                            <div>
-                                <SEHeader2Two />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeader2Two' && (
+                        <div>
+                            <SEHeader2Two />
+                        </div>
+                    )}
+
 
                     {/* Tarea 2 */}
                     <div ref={addSectionRef} className="scroll-section">
@@ -199,12 +201,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderThree' && (
-                            <div>
-                                <SEHeaderThree />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderThree' && (
+                        <div>
+                            <SEHeaderThree />
+                        </div>
+                    )}
+
 
                     <div>
                         <h3 id="restake" className="fn__maintitle big" data-text="DeFi Restake" data-align="center" style={{ marginBottom: "40px", marginTop: "30px" }}>
@@ -247,12 +250,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderSix' && (
-                            <div>
-                                <SEHeaderSix />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderSix' && (
+                        <div>
+                            <SEHeaderSix />
+                        </div>
+                    )}
+
 
                     {/* Tarea 4 */}
                     <div ref={addSectionRef} className="scroll-section">
@@ -289,12 +293,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderFour' && (
-                            <div>
-                                <SEHeaderFour />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderFour' && (
+                        <div>
+                            <SEHeaderFour />
+                        </div>
+                    )}
+
 
                     {/* Tarea 5 */}
                     <div ref={addSectionRef} className="scroll-section">
@@ -331,12 +336,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderFive' && (
-                            <div>
-                                <SEHeaderFive />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderFive' && (
+                        <div>
+                            <SEHeaderFive />
+                        </div>
+                    )}
+
 
                     {/* Tarea 6 */}
                     <div ref={addSectionRef} className="scroll-section">
@@ -373,12 +379,13 @@ const StakeGSA = () => {
                                 </div>
                             </div>
                         </div>
-                        {visibleComponent === 'SEHeaderSeven' && (
-                            <div>
-                                <SEHeaderSeven />
-                            </div>
-                        )}
                     </div>
+                    {visibleComponent === 'SEHeaderSeven' && (
+                        <div>
+                            <SEHeaderSeven />
+                        </div>
+                    )}
+
                 </div>
             </div>
 
