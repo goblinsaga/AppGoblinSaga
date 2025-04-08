@@ -32,7 +32,7 @@ const NewUsers = () => {
                 `}
             </style>
 
-            <div className="container" style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
+            <div style={{ display: "flex", justifyContent: "center", marginTop: "10px" }}>
                 <div
                     className="partners-container"
                     style={{
@@ -81,8 +81,8 @@ const NewUsers = () => {
                         <p style={{ margin: 0 }}>2. Migrate Items & S.Items to V2</p>
                         <p style={{ margin: 0 }}>3. Migrate Your Old Tokens to V2</p>
 
-                        <a href="#migration" className="metaportal_fn_button" style={{ marginTop: "20px", paddingBottom: "2rem" }}>
-                            Migrate your NFTs Now
+                        <a href="https://docs.goblinsaga.xyz/nft-and-token-migration#migration-of-nfts-to-new-mining-smart-contracts" target="_blank" className="metaportal_fn_button" style={{ marginTop: "20px", paddingBottom: "2rem" }}>
+                            Migrate Now
                         </a>
                     </div>
                 </div>
