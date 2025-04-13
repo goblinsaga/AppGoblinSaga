@@ -257,7 +257,48 @@ const StakeGSA = () => {
                         </div>
                     )}
 
-
+                    {/* Tarea 5 */}
+                    <div ref={addSectionRef} className="scroll-section">
+                        <div
+                            className="blog__item"
+                            onClick={() => handleComponentClick('SEHeaderFive')}
+                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
+                            onMouseEnter={(e) => {
+                                e.currentTarget.style.transform = "translateY(-10px)";
+                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
+                            }}
+                            onMouseLeave={(e) => {
+                                e.currentTarget.style.transform = "translateY(0)";
+                                e.currentTarget.style.boxShadow = "none";
+                            }}
+                        >
+                            <div className="task-icon">
+                                <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
+                            </div>
+                            <div className="task-content">
+                                <p className="task-title">aPolWMATIC/WGSA🔥🔥</p>
+                                <div className="additional-text">
+                                    <span className="label">Total Staked: </span>
+                                    <Counter end={totalAPOLStaked || 0} decimals={0} />
+                                    <span className="suffix">
+                                        {Number(totalAPOLStaked) >= 1_000_000 ? "K" : Number(totalAPOLStaked) >= 1_000 ? "K" : ""} $aPOL
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="task-action">
+                                <div className="task-reward-container">
+                                    <p className="task-reward">APR: 71.68%</p>
+                                    <div className="additional-text"><SEv5Rewards /></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {visibleComponent === 'SEHeaderFive' && (
+                        <div>
+                            <SEHeaderFive />
+                        </div>
+                    )}
+                    
                     {/* Tarea 4 */}
                     <div ref={addSectionRef} className="scroll-section">
                         <div
@@ -300,50 +341,6 @@ const StakeGSA = () => {
                         </div>
                     )}
 
-
-                    {/* Tarea 5 */}
-                    <div ref={addSectionRef} className="scroll-section">
-                        <div
-                            className="blog__item"
-                            onClick={() => handleComponentClick('SEHeaderFive')}
-                            style={{ cursor: "pointer", transition: "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out" }}
-                            onMouseEnter={(e) => {
-                                e.currentTarget.style.transform = "translateY(-10px)";
-                                e.currentTarget.style.boxShadow = "0px 4px 10px rgba(128, 0, 128, 0.6)";
-                            }}
-                            onMouseLeave={(e) => {
-                                e.currentTarget.style.transform = "translateY(0)";
-                                e.currentTarget.style.boxShadow = "none";
-                            }}
-                        >
-                            <div className="task-icon">
-                                <img src="/img/aPOL-WGSA.png" alt="Goblin Icon" />
-                            </div>
-                            <div className="task-content">
-                                <p className="task-title">aPolWMATIC/WGSA🔥🔥</p>
-                                <div className="additional-text">
-                                    <span className="label">Total Staked: </span>
-                                    <Counter end={totalAPOLStaked || 0} decimals={0} />
-                                    <span className="suffix">
-                                        {Number(totalAPOLStaked) >= 1_000_000 ? "K" : Number(totalAPOLStaked) >= 1_000 ? "K" : ""} $aPOL
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="task-action">
-                                <div className="task-reward-container">
-                                    <p className="task-reward">APR: 74.08%</p>
-                                    <div className="additional-text"><SEv5Rewards /></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {visibleComponent === 'SEHeaderFive' && (
-                        <div>
-                            <SEHeaderFive />
-                        </div>
-                    )}
-
-
                     {/* Tarea 6 */}
                     <div ref={addSectionRef} className="scroll-section">
                         <div
@@ -363,7 +360,7 @@ const StakeGSA = () => {
                                 <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
                             </div>
                             <div className="task-content">
-                                <p className="task-title">aPolUSDT/WGSA🔥🔥🔥</p>
+                                <p className="task-title">aPolUSDT/WGSA🔥</p>
                                 <div className="additional-text">
                                     <span className="label">Total Staked: </span>
                                     <Counter end={totalUSDTStaked || 0} decimals={0} />
