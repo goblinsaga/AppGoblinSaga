@@ -234,7 +234,7 @@ const StakeGSA = () => {
                                 <img src="/img/MATICX-WGSA.png" alt="Goblin Icon" />
                             </div>
                             <div className="task-content">
-                                <p className="task-title">MATICX/WGSA🔥</p>
+                                <p className="task-title">MATICX/WGSA</p>
                                 <div className="additional-text">
                                     <span className="label">Total Staked: </span>
                                     <Counter end={totalMATICXStaked || 0} decimals={0} />
@@ -360,7 +360,7 @@ const StakeGSA = () => {
                                 <img src="/img/USDT-WGSA.png" alt="Goblin Icon" />
                             </div>
                             <div className="task-content">
-                                <p className="task-title">aPolUSDT/WGSA🔥</p>
+                                <p className="task-title">aPolUSDT/WGSA</p>
                                 <div className="additional-text">
                                     <span className="label">Total Staked: </span>
                                     <Counter end={totalUSDTStaked || 0} decimals={0} />
