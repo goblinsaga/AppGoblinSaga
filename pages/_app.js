@@ -10,7 +10,10 @@ function MyApp({ Component, pageProps }) {
     <Provider store={store}>
       <ThirdwebProvider
         autoConnect={true}
-        activeChain={Polygon}
+        activeChain={{
+          ...Polygon,
+          rpc: [process.env.NEXT_PUBLIC_ALCHEMY_RPC_URL],
+        }}
         supportedChains={[Polygon]}
         supportedWallets={[
           metamaskWallet(),
