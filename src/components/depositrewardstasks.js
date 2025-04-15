@@ -7,6 +7,10 @@ const smartContracts = [
     { name: "Greed Claim", address: "0x80d89a39fa93d03720aac5a1e49956cca9014008" },
     { name: "Amulet Claim", address: "0xc6168f1e52848c30c4c91e11b059584cb59e7cb6" },
     { name: "Token Box", address: "0xfbc30c0293003a39efa86aef9aa035f5d03ad86c" },
+    { name: "GSA st1", address: "0xe4c4ea9e42fea530af83f9d4771cd65a70d03eb3" },
+    { name: "GSA st2", address: "0xcc90fae29cee4742efeceecf611718bbaf70da43" },
+    { name: "EPOP st1", address: "0x66984736ed5a91c598af721f55a496ecef81d94f" },
+    { name: "EPOP st2", address: "0x0450fcd663787eb99ee1d223f316382ffc1cd484" },
 ];
 
 const tokenAddress = "0xC3882D10e49Ac4E9888D0C594DB723fC9cE95468";
