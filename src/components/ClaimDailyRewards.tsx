@@ -2,6 +2,10 @@ import ClaimRewardsNFTClaimThree from "./TaskCenter/DailyRewardsEnchantedAmulet"
 import ClaimRewardsNFTClaim from "./TaskCenter/DailyRewardsGoblinNFT";
 import ClaimRewardsNFTClaimTwo from "./TaskCenter/DailyRewardsGPotion";
 import ClaimRewardsNFTClaimBox from "./TaskCenter/DailyRewardsBox";
+import GSAdr1 from "./TaskCenter/SocialTask1";
+import GSAdr2 from "./TaskCenter/SocialTask2";
+import GSAdr3 from "./TaskCenter/SocialTask3";
+import GSAdr4 from "./TaskCenter/SocialTask4";
 
 const ClaimDailyRewards = () => {
     return (
@@ -67,6 +71,70 @@ const ClaimDailyRewards = () => {
                         <div className="task-action">
                             <ClaimRewardsNFTClaimTwo />
                         </div>
+                    </div>
+                </div>
+
+                <p id="social-tasks" style={{ textAlign: "center", marginTop: "50px", marginBottom: "30px" }}>Social Tasks | Goblin Saga</p>
+
+                {/* Tarea 1 */}
+                <div className="blog__item">
+                    <div className="task-icon">
+                        <img src="/img/MLGSA.png" alt="Goblin Icon" />
+                    </div>
+                    <div className="task-content">
+                        <p className="task-title">Quote Goblin Saga's post</p>
+                        <p className="task-reward" style={{ color: "#6abe30" }}>+2500 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                        <p style={{ color: "#6abe30", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +3500 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                    </div>
+                    <div className="task-action">
+                        <GSAdr1 />
+                    </div>
+                </div>
+
+                {/* Tarea 2 */}
+                <div style={{ marginTop: "20px" }} className="blog__item">
+                    <div className="task-icon">
+                        <img src="/img/MLGSA.png" alt="Goblin Icon" />
+                    </div>
+                    <div className="task-content">
+                        <p className="task-title">Quote Goblin Saga's post</p>
+                        <p className="task-reward" style={{ color: "#6abe30" }}>+2500 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                        <p style={{ color: "#6abe30", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +3500 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                    </div>
+                    <div className="task-action">
+                        <GSAdr2 />
+                    </div>
+                </div>
+
+                <p id="social-tasks" style={{ textAlign: "center", marginTop: "50px", marginBottom: "30px" }}>Partners Tasks | Epop Girls</p>
+
+                {/* Tarea 1 */}
+                <div style={{ marginTop: "20px" }} className="blog__item">
+                    <div className="task-icon">
+                        <img src="/img/EPOP.png" alt="Goblin Icon" />
+                    </div>
+                    <div className="task-content">
+                        <p className="task-title">Quote Epop Girls post</p>
+                        <p className="task-reward" style={{ color: "#6abe30" }}>+2500 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                        <p style={{ color: "#6abe30", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +3500 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                    </div>
+                    <div className="task-action">
+                        <GSAdr3 />
+                    </div>
+                </div>
+
+                {/* Tarea 2 */}
+                <div style={{ marginTop: "20px" }} className="blog__item">
+                    <div className="task-icon">
+                        <img src="/img/EPOP.png" alt="Goblin Icon" />
+                    </div>
+                    <div className="task-content">
+                        <p className="task-title">Quote Epop Girls post</p>
+                        <p className="task-reward" style={{ color: "#6abe30" }}>+2500 <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                        <p style={{ color: "#6abe30", fontSize: "9px", marginTop: "-15px" }} className="task-reward">7 Streaks = +3500 <img style={{ marginTop: "-3px", width: "9px" }} src="/img/GSAV2.png" alt="GSA Token" /></p>
+                    </div>
+                    <div className="task-action">
+                        <GSAdr4 />
                     </div>
                 </div>
             </div>
