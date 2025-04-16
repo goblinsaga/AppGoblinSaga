@@ -306,7 +306,7 @@ const SEHeaderFour: React.FC = () => {
                                     <button className="metaportal_fn_buttonLW" onClick={handleStake} disabled={stakingLoading}>
                                         {stakingLoading ? "Staking..." : "Stake"}
                                     </button>
-                                    <button className="metaportal_fn_buttonLW" onClick={() => handleWithdraw(userStakeInfo?.amountStaked)} disabled={unstakingLoading}>
+                                    <button className="metaportal_fn_buttonLW" disabled={unstakingLoading}>
                                         {unstakingLoading ? "Unstaking..." : "Unstake"}
                                     </button>
                                 </div>
