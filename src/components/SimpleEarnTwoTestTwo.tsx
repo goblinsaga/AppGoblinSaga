@@ -299,7 +299,6 @@ const SEHeader2Two: React.FC = () => {
                                     </button>
                                     <button
                                         className="metaportal_fn_buttonLW"
-                                        onClick={() => handleWithdraw(userStakeInfo.amountStaked)}
                                         disabled={unstakingLoading}
                                     >
                                         {unstakingLoading ? "Unstaking..." : "Unstake POL"}
