@@ -11,7 +11,7 @@ const TaskCenterApp = () => {
                         <div className="task-content">
                             <p className="task-title">Task Center</p>
                             <p style={{ color: "yellow" }} className="task-reward">Earn $GSA <img style={{ marginTop: "-3px", width: "20px" }} src="/img/GSAV2.png" alt="" /></p>
-                            <p style={{ fontSize: "11px", marginTop: "-10px" }} className="task-reward">Claim every 12 Hours</p>
+                            <p style={{ fontSize: "11px", marginTop: "-10px" }} className="task-reward">Claim every 6 Hours</p>
                         </div>
                         <div style={{ position: "relative", width: "150px", height: "45px", marginLeft: "-10px" }}>
                             <a style={{ textDecoration: "none" }} href="https://app.goblinsaga.xyz/task-center">
