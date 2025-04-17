@@ -371,7 +371,7 @@ const GSAdr2 = () => {
     // Twitter verification
     const handleTweet = () => {
         const tweetText = encodeURIComponent(
-            "I have just staked some Goblins on @goblinsaga_xyz Mining App what are you waiting for? LFG!. #NFT $POL #Crypto https://x.com/goblinsaga_xyz/status/1895854924447301938"
+            "I have just staked some Goblins on @goblinsaga_xyz Mining App what are you waiting for? LFG!. #NFT $POL #Crypto https://x.com/goblinsaga_xyz/status/1912592409650950643"
         );
         const tweetUrl = `https://twitter.com/intent/tweet?text=${tweetText}`;
         window.open(tweetUrl, "_blank");
