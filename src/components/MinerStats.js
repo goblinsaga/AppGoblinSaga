@@ -24,6 +24,7 @@ import StakeAllMines from "./OptionButtons/StakeAllMines";
 import StakeUnstakeNFTs from "./StakeUnstake";
 import TaskCenterApp from "./TaskCenter";
 import ZeusCheck from "./Badges/ZeusHelper";
+import ZeusCenterApp from "./ZeusHelpBanner";
 
 const MinerStats = () => {
   const [isVerified, setIsVerified] = useState(null);
@@ -49,6 +50,9 @@ const MinerStats = () => {
 
   return (
     <section style={{ marginTop: "-100px", marginBottom: "150px" }} className="section">
+      <div className="container" style={{ paddingBottom: "30px" }}>
+        <ZeusCenterApp />
+      </div>
       <div id="apps" className="container">
         {/* News Shotcode */}
         <div className="blog__item">
