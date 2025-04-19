@@ -7,6 +7,7 @@ import MinesSection from "../src/components/MinesSection";
 import BoxsSection from "../src/components/BoxsSection";
 import Faq from "../src/components/Faq";
 import NewUsersTwo from "../src/components/NewUsers2";
+import ZeusCenterApp from "../src/components/ZeusHelpBanner";
 
 const Index = () => {
   const sectionRefs = useRef([]);
@@ -46,6 +47,10 @@ const Index = () => {
         <div id="news">
           <NewUsersTwo />
         </div>
+      </div>
+
+      <div ref={addSectionRef} className="scroll-section">
+        <ZeusCenterApp />
       </div>
 
       <div ref={addSectionRef} className="scroll-section">
