@@ -23,6 +23,7 @@ import UnstakeAllMines from "./OptionButtons/UnstakeAllMines";
 import StakeAllMines from "./OptionButtons/StakeAllMines";
 import StakeUnstakeNFTs from "./StakeUnstake";
 import TaskCenterApp from "./TaskCenter";
+import ZeusCheck from "./Badges/ZeusHelper";
 
 const MinerStats = () => {
   const [isVerified, setIsVerified] = useState(null);
@@ -128,6 +129,42 @@ const MinerStats = () => {
                   <LordCheck onVerificationStatus={handleVerificationStatus} />,
                   <WizardCheck onVerificationStatus={handleVerificationStatus} />,
                   <WarriorCheck onVerificationStatus={handleVerificationStatus} />
+                ].map((BadgeComponent, index) => (
+                  <div
+                    key={index}
+                    style={{
+                      ...badgeStyle,
+                      width: isMobile ? '25%' : 'auto',
+                      boxSizing: 'border-box',
+                      padding: isMobile ? '1px' : '5px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      transition: 'transform 0.3s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      const target = e.currentTarget;
+                      target.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseLeave={(e) => {
+                      const target = e.currentTarget;
+                      target.style.transform = 'scale(1)';
+                    }}
+                  >
+                    {BadgeComponent}
+                  </div>
+                ))}
+              </div>
+              
+              <p style={{ textAlign: "center", paddingTop: "2rem" }}>Special Badges</p>
+              <div style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                maxWidth: isMobile ? '100%' : '900px',
+                margin: '0 auto'
+              }}>
+                {[
+                  <ZeusCheck onVerificationStatus={handleVerificationStatus} />,
                 ].map((BadgeComponent, index) => (
                   <div
                     key={index}
