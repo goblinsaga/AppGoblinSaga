@@ -86,7 +86,7 @@ const ZeusCheck = ({ onVerificationStatus }) => {
                 </p>
             ) : isVerified ? (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                    <a href="/help-zeus" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <a href="/help-zeus" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                         <img
                             src="/img/PET-FREN.png"
                             alt="Emperor Rank"
@@ -97,7 +97,7 @@ const ZeusCheck = ({ onVerificationStatus }) => {
                 </div>
             ) : (
                 <div>
-                    <a href="/help-zeus" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
+                    <a href="/help-zeus" rel="noopener noreferrer" style={{ textDecoration: "none" }}>
                         <p style={{
                             display: "flex",
                             alignItems: "center",
