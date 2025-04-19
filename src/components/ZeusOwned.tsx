@@ -31,5 +31,5 @@ export default function ZeusMiningCount({ tokenId }: Props) {
     }
   }, [stakeInfo]);
 
-  return stakedCount > 0 ? <>{stakedCount}</> : null;
+  return stakedCount > 0 ? <>{stakedCount} Zeus</> : null;
 }
