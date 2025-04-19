@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="footer">
           <div className="left_part">
             <p>
-              Copyright 2024 — Goblin Saga
+              Copyright 2025 — Goblin Saga
             </p>
           </div>
           <div className="right_part">
