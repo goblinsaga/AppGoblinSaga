@@ -1,6 +1,6 @@
 const ZeusCenterApp = () => {
     return (
-        <section className="container" style={{ marginTop: "-100px", marginBottom: "30px" }}>
+        <section className="container" style={{ marginTop: "-115px", marginBottom: "30px" }}>
             <div id="task-center">
                 <div className="tasks-list">
                     {/* Tarea 0 */}
