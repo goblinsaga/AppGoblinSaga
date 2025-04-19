@@ -421,7 +421,7 @@ const ZeusDonationApp: React.FC = () => {
                                     <p>Help Zeus Owned</p>
                                 </div>
                                 <div className="title">
-                                    <h5><ZeusMiningCount /></h5>
+                                    <h5><ZeusMiningCount tokenId={0} /></h5>
                                 </div>
                             </div>
                             <div style={{ height: "200px" }} className="blog__item">
